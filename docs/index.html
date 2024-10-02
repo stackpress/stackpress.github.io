@@ -17,12 +17,14 @@
   <meta name="twitter:image" content="https://www.stackpress.io/images/stackpress-logo.png" />
   <link rel="favicon" href="https://www.stackpress.io/favicon.ico" />
   <link rel="shortcut icon" type="image/png" href="https://www.stackpress.io/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <style>
     html, body {
-      background-color: #000000;
+      background-color: #E1E8EF;
       font-family: Arial, sans-serif;
       height: 100%;
       margin: 0;
+      overflow: auto;
       padding: 0;
       position: relative;
       width: 100%;
@@ -30,113 +32,240 @@
     header {
       align-items: center;
       display: flex;
-      justify-content: center;
-      padding: 100px 0 50px;
-      position: relative;
-    }
-    body::before {
-      background-image: url(./images/background.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      bottom: 0;
-      content: " ";
-      left: 0;
-      opacity: 0.25;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    header .icon {
-      height: 100px;
-    }
-    main {
-      background-color: rgba(255, 255, 255, 0.50);
-      border: 5px solid #FFFFFF;
-      border-radius: 10px;
-      box-sizing: border-box;
-      margin: 0 auto;
+      justify-content: space-between;
+      margin: auto;
       max-width: 960px;
       padding: 20px;
       position: relative;
     }
-    ul {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      list-style-type: none;
-      padding: 0;
+    header::before {
+      border: 1px solid#222222;
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 80px;
+      right: 70px;
     }
-    li {
-      width: 33.33%;
-      text-align: center;
+    header > .icon {
+      height: 60px;
     }
-    li .icon {
-      height: 150px;
+    header .text {
+      height: 20px;
     }
-    a {
-      color: #EFEFEF;
-      display: block;
-      font-size: 25px;
-      font-weight: bold;
-      margin: 0;
-      text-decoration: none;
+    header h6 {
+      font-size: 14px;
+      letter-spacing: 5px;
+      margin: 14px 0 0;
       text-transform: uppercase;
     }
-    @media (max-width: 1092px) {
-      main {
-        margin: 0 20px;
-      }
+    header .products {
+      align-items: center;
+      display: flex;
+      position: relative;
     }
-    @media (max-width: 767px) {
-      header .icon {
-        height: 60px;
-        margin-right: 10px;
-      }
-      header .text {
-        height: 30px;
-      }
-      li .icon {
-        height: 100px;
-      }
-      a {
-        font-size: 20px;
-      }
+    header .products div {
+      align-items: center;
+      background-color: #E1E8EF;
+      box-sizing: border-box;
+      display: flex;
+      margin-left: 40px;
+      padding: 5px;
     }
-    @media (max-width: 420px) {
-      main {
-        padding-bottom: 40px;
-        padding-top: 0;
-      }
-      ul {
-        display: block;
-      }
-      li {
-        padding-top: 40px;
-        width: 100%;
-      }
+    header .products img {
+      height: 30px;
+    }
+    header .products a {
+      color: #222222;
+      font-size: 14px;
+      margin: 0 10px 0 0;
+      text-decoration: none;
+    }
+    header .social {
+      flex-grow: 1;
+      font-size: 30px;
+      text-align: right;
+    }
+    header .social a {
+      color: #222222;
+      text-decoration: none;
+    }
+    main {
+      margin: auto;
+      max-width: 960px;
+      padding-top: 20px;
+    }
+    blockquote {
+      background-color: #0C56A7;
+      border-radius: 10px;
+      color: #FFFFFF;
+      margin: 0;
+      overflow: hidden;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      border: 1px solid #222222;
+      border-radius: 10px;
+      margin-top: 20px;
+      padding: 20px;
+    }
+    section div {
+      align-items: center;
+      display: flex;
+    }
+    section div img {
+      height: 30px;
+    }
+    section div h3 {
+      color: #222222;
+      padding-right: 5px;
+      text-transform: uppercase;
+    }
+    section div a {
+      color: #666666;
+      display: inline-block;
+      margin-left: 5px;
+    }
+    section article p {
+      margin-bottom: 40px;
+      margin-top: 10px;
+    }
+    footer {
+      border-top: 2px solid #222222;
+      color: #0C56A7;
+      margin: 20px auto 0;
+      max-width: 960px;
+      padding-top: 20px;
+      text-align: center;
+      
+    }
+    footer a {
+      color: #0C56A7;
+      text-decoration: none;
+      padding: 20px 0 100px;
     }
   </style>
 </head>
 <body>
   <header>
     <img class="icon" src="./images/stackpress-logo-icon.png" alt="StackPress icon" />
-    <img class="text" src="./images/stackpress-logo-text.png" alt="StackPress text" />
-  </header>
-  <main>
-    <ul>
-      <li>
+    <div>
+      <img class="text" src="./images/stackpress-logo-text.png" alt="StackPress text" />
+      <h6>Foundation</h6>
+    </div>
+    <nav class="products">
+      <div>
         <img class="icon" src="./images/idea-logo-icon.png" alt="StackPress icon" />
         <a href="/idea">Idea</a>
-      </li>
-      <li>
+      </div>
+      <div>
         <img class="icon" src="./images/ingest-logo-icon.png" alt="StackPress icon" />
         <a href="/ingest">Ingest</a>
-      </li>
-      <li>
+      </div>
+      <div>
         <img class="icon" src="./images/ink-logo-icon.png" alt="StackPress icon" />
         <a href="/ink">Ink</a>
-      </li>
-    </ul>
+      </div>
+    </nav>
+    <nav class="social">
+      <a href="https://github.com/stackpress"><i class="fab fa-fw fa-github"></i></a>
+    </nav>
+  </header>
+  <main>
+    <blockquote>
+      > &nbsp;We are building an open source stack on the edge of technology.
+    </blockquote>
+    <section>
+      <div>
+        <img class="icon" src="./images/idea-logo-icon.png" alt="idea icon" />
+        <h3>Idea</h3>
+        <a href="https://github.com/stackpress/idea" target="_blank">
+          <i class="fab fa-fw fa-github"></i>
+        </a>
+        <a href="/idea"><i class="fas fa-fw fa-globe"></i></a>
+      </div>
+      <article>
+        <p>
+          Generates app code based on a schema file. Highly pluggable. Bring your own generator.
+        </p>
+        <nav>
+          <a href="https://www.npmjs.com/package/@stackpress/idea">
+            <img src="https://img.shields.io/npm/v/%40stackpress%2Fidea.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/idea/blob/main/LICENSE">
+            <img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/idea/commits/main/">
+            <img src="https://img.shields.io/github/last-commit/stackpress/idea" />
+          </a>
+          <a href="https://github.com/stackpress/ink/blob/main/README.md#contributing">
+            <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
+          </a>
+        </nav>
+      </article>
+    </section>
+    <section>
+      <div>
+        <img class="icon" src="./images/ingest-logo-icon.png" alt="ingest icon" />
+        <h3>Ingest</h3>
+        <a href="https://github.com/stackpress/ingest" target="_blank">
+          <i class="fab fa-fw fa-github"></i>
+        </a>
+        <a href="/ingest"><i class="fas fa-fw fa-globe"></i></a>
+      </div>
+      <article>
+        <p>
+          Event driven serverless framework. 
+        </p>
+        <nav>
+          <a href="https://www.npmjs.com/package/@stackpress/ingest">
+            <img src="https://img.shields.io/npm/v/%40stackpress%2Fingest.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/ingest/blob/main/LICENSE">
+            <img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/ingest/commits/main/">
+            <img src="https://img.shields.io/github/last-commit/stackpress/ingest" />
+          </a>
+          <a href="https://github.com/stackpress/ingest/blob/main/README.md#contributing">
+            <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
+          </a>
+        </nav>
+      </article>
+    </section>
+    <section>
+      <div>
+        <img class="icon" src="./images/ink-logo-icon.png" alt="ink icon" />
+        <h3>Ink</h3>
+        <a href="https://github.com/stackpress/ink" target="_blank">
+          <i class="fab fa-fw fa-github"></i>
+        </a>
+        <a href="/ink"><i class="fas fa-fw fa-globe"></i></a>
+      </div>
+      <article>
+        <p>
+          Generates app code based on a schema file. Highly pluggable. Bring your own generator.
+        </p>
+        <nav>
+          <a href="https://www.npmjs.com/package/@stackpress/ink">
+            <img src="https://img.shields.io/npm/v/%40stackpress%2Fink.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/ink/blob/main/LICENSE">
+            <img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/ink/commits/main/">
+            <img src="https://img.shields.io/github/last-commit/stackpress/ink" />
+          </a>
+          <a href="https://github.com/stackpress/ink/blob/main/README.md#contributing">
+            <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
+          </a>
+        </nav>
+      </article>
+    </section>
   </main>
+  <footer>
+    <i class="fas fa-fw fa-heart"></i>
+    <a href="https://www.stackpress.io/">Become a Sponsor</a>
+  </footer>
 </body>
 </html>
