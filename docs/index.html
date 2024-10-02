@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StackPress - Open Source on the Edge of Technology</title>
+  <meta name="description" content="An open source technology stack developed on the edge of technology" />
+  <meta property="og:title" content="StackPress - Open Source on the Edge of Technology" />
+  <meta property="og:description" content="An open source technology stack developed on the edge of technology" />
+  <meta property="og:image" content="https://www.stackpress.io/images/stackpress-logo.png" />
+  <meta property="og:url" content="https://www.stackpress.io/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@stackpress" />
+  <meta name="twitter:title" content="StackPress - Open Source on the Edge of Technology" />
+  <meta name="twitter:description" content="An open source technology stack developed on the edge of technology" />
+  <meta name="twitter:image" content="https://www.stackpress.io/images/stackpress-logo.png" />
+  <link rel="favicon" href="https://www.stackpress.io/favicon.ico" />
+  <link rel="shortcut icon" type="image/png" href="https://www.stackpress.io/favicon.png" />
+  <style>
+    html, body {
+      background-color: #000000;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      width: 100%;
+    }
+    header {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 100px 0 50px;
+      position: relative;
+    }
+    body::before {
+      background-image: url(./images/background.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      bottom: 0;
+      content: " ";
+      left: 0;
+      opacity: 0.25;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    header .icon {
+      height: 100px;
+    }
+    main {
+      background-color: rgba(255, 255, 255, 0.50);
+      border: 5px solid #FFFFFF;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 20px;
+      position: relative;
+    }
+    ul {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      width: 33.33%;
+      text-align: center;
+    }
+    li .icon {
+      height: 150px;
+    }
+    a {
+      color: #EFEFEF;
+      display: block;
+      font-size: 25px;
+      font-weight: bold;
+      margin: 0;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    @media (max-width: 1092px) {
+      main {
+        margin: 0 20px;
+      }
+    }
+    @media (max-width: 767px) {
+      header .icon {
+        height: 60px;
+        margin-right: 10px;
+      }
+      header .text {
+        height: 30px;
+      }
+      li .icon {
+        height: 100px;
+      }
+      a {
+        font-size: 20px;
+      }
+    }
+    @media (max-width: 420px) {
+      main {
+        padding-bottom: 40px;
+        padding-top: 0;
+      }
+      ul {
+        display: block;
+      }
+      li {
+        padding-top: 40px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="icon" src="./images/stackpress-logo-icon.png" alt="StackPress icon" />
+    <img class="text" src="./images/stackpress-logo-text.png" alt="StackPress text" />
+  </header>
+  <main>
+    <ul>
+      <li>
+        <img class="icon" src="./images/idea-logo-icon.png" alt="StackPress icon" />
+        <a href="/idea">Idea</a>
+      </li>
+      <li>
+        <img class="icon" src="./images/ingest-logo-icon.png" alt="StackPress icon" />
+        <a href="/ingest">Ingest</a>
+      </li>
+      <li>
+        <img class="icon" src="./images/ink-logo-icon.png" alt="StackPress icon" />
+        <a href="/ink">Ink</a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>
