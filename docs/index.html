@@ -47,7 +47,7 @@
       position: absolute;
       top: 50%;
       left: 80px;
-      right: 70px;
+      right: 105px;
     }
     header > .icon {
       height: 60px;
@@ -83,12 +83,27 @@
       margin: 0 10px 0 0;
     }
     header .social {
+      align-items: center;
+      display: flex;
       flex-grow: 1;
       font-size: 30px;
+      justify-content: flex-end;
       text-align: right;
     }
     header .social a {
       color: #222222;
+    }
+    header .social a.npm {
+      align-items: center;
+      background-color: #CB3837;;
+      border-radius: 10000px;
+      display: inline-flex;
+      color: #FFFFFF;
+      font-size: 16px;
+      height: 30px;
+      justify-content: center;
+      margin-right: 5px;
+      width: 30px;
     }
     main {
       margin: auto;
@@ -162,7 +177,7 @@
         margin-left: 2px;
       }
     }
-    @media (max-width: 534px) {
+    @media (max-width: 568px) {
       header .products {
         display: none;
       }
@@ -191,7 +206,12 @@
       </div>
     </nav>
     <nav class="social">
-      <a href="https://github.com/stackpress"><i class="fab fa-fw fa-github"></i></a>
+      <a class="npm" href="https://www.npmjs.com/org/stackpress">
+        <i class="fab fa-fw fa-npm"></i>
+      </a>
+      <a href="https://github.com/stackpress">
+        <i class="fab fa-fw fa-github"></i>
+      </a>
     </nav>
   </header>
   <main>
