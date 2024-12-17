@@ -74,11 +74,15 @@
       margin-left: 40px;
       padding: 5px;
     }
-    header .products img {
+    header .products a {
+      align-items: center;
+      display: inline-flex;
+    }
+    header .products a img {
       height: 30px;
       margin-right: 5px;
     }
-    header .products a {
+    header .products a span {
       color: #222222;
       font-size: 14px;
       margin: 0 10px 0 0;
@@ -169,17 +173,25 @@
       color: #0C56A7;
       padding: 20px 0 100px;
     }
+    @media (max-width: 992px) {
+      header .products div {
+        margin-left: 10px;
+      }
+      header .products div:first-child {
+        margin-left: 30px;
+      }
+    }
     @media (max-width: 960px) {
       main {
         margin: 0 20px;
       }
     }
-    @media (max-width: 767px) {
-      header .products div {
-        margin-left: 2px;
+    @media (max-width: 848px) {
+      header .products a span {
+        display: none;
       }
     }
-    @media (max-width: 680px) {
+    @media (max-width: 610px) {
       header .products {
         display: none;
       }
@@ -195,20 +207,34 @@
     </div>
     <nav class="products">
       <div>
-        <img class="icon" src="./images/incept-logo-icon.png" alt="incept icon" />
-        <a href="/incept">Incept</a>
+        <a href="/incept">
+          <img class="icon" src="./images/incept-logo-icon.png" alt="incept icon" />
+          <span>Incept</span>
+        </a>
       </div>
       <div>
-        <img class="icon" src="./images/ingest-logo-icon.png" alt="ingest icon" />
-        <a href="/ingest">Ingest</a>
+        <a href="/ingest">
+          <img class="icon" src="./images/ingest-logo-icon.png" alt="ingest icon" />
+          <span>Ingest</span>
+        </a>
       </div>
       <div>
-        <img class="icon" src="./images/ink-logo-icon.png" alt="ink icon" />
-        <a href="/ink">Ink</a>
+        <a href="/inquire">
+          <img class="icon" src="./images/inquire-logo-icon.png" alt="inquire icon" />
+          <span>Inquire</span>
+        </a>
       </div>
       <div>
-        <img class="icon" src="./images/idea-logo-icon.png" alt="idea icon" />
-        <a href="/idea">Idea</a>
+        <a href="/ink">
+          <img class="icon" src="./images/ink-logo-icon.png" alt="ink icon" />
+          <span>Ink</span>
+        </a>
+      </div>
+      <div>
+        <a href="/idea">
+          <img class="icon" src="./images/idea-logo-icon.png" alt="idea icon" />
+          <span>Idea</span>
+        </a>
       </div>
     </nav>
     <nav class="social">
@@ -289,6 +315,46 @@
             <img src="https://img.shields.io/github/last-commit/stackpress/ingest" />
           </a>
           <a href="https://github.com/stackpress/ingest/blob/main/README.md#contributing">
+            <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
+          </a>
+        </nav>
+      </article>
+    </section>
+    <section>
+      <div>
+        <img class="icon" src="./images/inquire-logo-icon.png" alt="inquire icon" />
+        <h3>Inquire</h3>
+        <a href="https://github.com/stackpress/inquire" target="_blank">
+          <i class="fab fa-fw fa-github"></i>
+        </a>
+        <a href="/inquire"><i class="fas fa-fw fa-globe"></i></a>
+      </div>
+      <article>
+        <p>
+          Super lightweight generic typed SQL query builder, SQL 
+          dialects and composite engine. Schema builder, but no ORM. 
+          Bring your own database library.
+        </p>
+        <ul>
+          <li>Node MySQL2</li>
+          <li>Better SQLite3</li>
+          <li>Node PostGres (pg)</li>
+          <li>PGLite</li>
+          <li>CockroachDB</li>
+          <li>NeonDB</li>
+          <li>Vercel Postgres</li>
+        </ul>
+        <nav>
+          <a href="https://www.npmjs.com/package/@stackpress/inquire">
+            <img src="https://img.shields.io/npm/v/%40stackpress%2Finquire.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/inquire/blob/main/LICENSE">
+            <img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat" />
+          </a>
+          <a href="https://github.com/stackpress/inquire/commits/main/">
+            <img src="https://img.shields.io/github/last-commit/stackpress/inquire" />
+          </a>
+          <a href="https://github.com/stackpress/inquire/blob/main/README.md#contributing">
             <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
           </a>
         </nav>
