@@ -4,49 +4,49 @@
 /* Default Theme
 ---------------------------------*/
 :root {
-  --primary: #1474FC;
-  --secondary: #F43980;
-  --black: #000000;
-  --white: #FFFFFF;
-  --info: #1474FC;
-  --error: #DC3545;
-  --warning: #FF7B07;
-  --success: #28A745;
-  --muted: #666666;
-  --bg0: #EFEFEF;
-  --bg1: #CFCFCF;
-  --bg2: #AFAFAF;
-  --bg3: #8F8F8F;
-  --bg4: #6F6F6F;
-  --bd0: #EFEFEF;
-  --bd1: #CFCFCF;
-  --bd2: #AFAFAF;
-  --bd3: #8F8F8F;
-  --bd4: #6F6F6F;
-  --bgi: #242424;
-  --tx0: #000000;
-  --tx1: #242424;
-  --txi: #CFCFCF;
+  --primary: #1474FC !important;
+  --secondary: #F43980 !important;
+  --black: #000000 !important;
+  --white: #FFFFFF !important;
+  --info: #1474FC !important;
+  --error: #DC3545 !important;
+  --warning: #FF7B07 !important;
+  --success: #28A745 !important;
+  --muted: #666666 !important;
+  --bg0: #EFEFEF !important;
+  --bg1: #CFCFCF !important;
+  --bg2: #AFAFAF !important;
+  --bg3: #BABABA !important;
+  --bg4: #9F9F9F !important;
+  --bd0: #EFEFEF !important;
+  --bd1: #CFCFCF !important;
+  --bd2: #AFAFAF !important;
+  --bd3: #BABABA !important;
+  --bd4: #9F9F9F !important;
+  --bgi: #333333 !important;
+  --tx0: #000000 !important;
+  --tx1: #333333 !important;
+  --txi: #CFCFCF !important;
   /* This fixes FOUC */
   display: none;
 }
 
 .dark {
-  --muted: #999999;
-  --bg0: #121212;
-  --bg1: #222222;
-  --bg2: #323232;
-  --bg3: #424242;
-  --bg4: #525252;
-  --bd0: #121212;
-  --bd1: #222222;
-  --bd2: #323232;
-  --bd3: #424242;
-  --bd4: #525252;
-  --bgi: #DBDBDB;
-  --tx0: #FFFFFF;
-  --tx1: #CFCFCF;
-  --txi: #222222
+  --muted: #999999 !important;
+  --bg0: #121212 !important;
+  --bg1: #222222 !important;
+  --bg2: #323232 !important;
+  --bg3: #424242 !important;
+  --bg4: #525252 !important;
+  --bd0: #121212 !important;
+  --bd1: #222222 !important;
+  --bd2: #323232 !important;
+  --bd3: #424242 !important;
+  --bd4: #525252 !important;
+  --bgi: #DBDBDB !important;
+  --tx0: #FFFFFF !important;
+  --tx1: #CFCFCF !important;
+  --txi: #222222 !important;
 }
 
 /* Reset (normalize.css)

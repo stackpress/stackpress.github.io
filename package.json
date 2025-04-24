@@ -5,6 +5,7 @@
   "private": true,
   "plugins": [
     "./plugins/app/plugin",
+    "./plugins/docs/plugin",
     "stackpress"
   ],
   "scripts": {
@@ -17,7 +18,8 @@
     "frui": "0.1.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.9"
+    "react-syntax-highlighter": "15.6.1",
+    "stackpress": "0.2.10"
   },
   "devDependencies": {
     "@stackpress/idea-transformer": "0.5.15",

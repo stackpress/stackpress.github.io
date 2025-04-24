@@ -32,33 +32,11 @@ export const config: Config = {
       plugins: [ unocss() ]
     }
   },
-  session: {
-    ...common.session,
-    access: {
-      GUEST: [
-        ...common.session.access.GUEST,
-        //dev routes
-        { method: 'ALL', route: '/@vite/client' },
-        { method: 'ALL', route: '/@react-refresh' },
-        { method: 'ALL', route: '/@fs/**' },
-        { method: 'ALL', route: '/node_modules/**' },
-        { method: 'ALL', route: '/__uno.css' },
-        { method: 'ALL', route: '/plugins/**' },
-        { method: 'ALL', route: '/react.svg' },
-        //public routes
-        { method: 'GET', route: '/assets/**' },
-        { method: 'GET', route: '/client/**' },
-        { method: 'GET', route: '/images/**' },
-        { method: 'GET', route: '/styles/**' },
-        { method: 'GET', route: '/favicon.ico' },
-        { method: 'GET', route: '/favicon.png' },
-      ]
-    }
-  },
   brand: common.brand,
   cli: common.cli,
   cookie: common.cookie,
-  language: common.language
+  language: common.language,
+  session: common.session
 };
 
 export async function bootstrap() {

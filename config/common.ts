@@ -43,15 +43,7 @@ export const session = {
   key: 'session',
   //used to generate the session id
   seed: 'abc123',
-  access: {
-    GUEST: [
-      //page routes
-      { method: 'ALL', route: '/' },
-      { method: 'GET', route: '/form' },
-      { method: 'ALL', route: '/auth/**' },
-      { method: 'ALL', route: '/api/**' }
-    ]
-  }
+  access: { GUEST: [ { method: 'ALL', route: '/**' } ] }
 };
 
 export const cookie = { 
