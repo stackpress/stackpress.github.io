@@ -6,13 +6,8 @@ import type {
 import { Table, Thead, Trow, Tcol } from 'frui/element/Table';
 import { useLanguage } from 'r22n';
 //docs
-import {
-  Header1,
-  Header2,
-  Paragraph,
-  Nav
-} from '../Typography.js';
-import Layout from '../Layout.js';
+import { H1, H2, P, Nav } from '../components/index.js';
+import Layout from '../components/Layout.js';
 
 export function DocumentationHead(props: ServerPageProps<ServerConfigProps>) {
   //props
@@ -50,18 +45,18 @@ export function DocumentationHead(props: ServerPageProps<ServerConfigProps>) {
 export function DocumentationBody() {
   return (
     <main className="px-h-100-0 overflow-auto px-p-10">
-      <Header1>Welcome to Stackpress</Header1>
+      <H1>Welcome to Stackpress</H1>
       
-      <Paragraph>
+      <P>
         Stackpress is a content management framework built on Typescript 
         following the Ecmascript Module standard, used to develop content 
         focused web applications. Design patterns that are implemented 
         on Stackpress surround event driven and pluggable, allowing 
         developers to build applications that are modular, reusable 
         and progressive.
-      </Paragraph> 
+      </P> 
 
-      <Paragraph>
+      <P>
         The goal of Stackpress is to fast forward idea to product in 
         days versus months. To get to days, Stackpress has built-in app
         essentials like authentication, roles &amp; permissions, i18n, 
@@ -70,19 +65,19 @@ export function DocumentationBody() {
         Stackpress is to be able to add, change and/or remove features 
         on the fly. This is achieved by organizing code into plugins, 
         and developing generators in order to render code on the fly.
-      </Paragraph>
+      </P>
 
-      <Paragraph>
+      <P>
         The ideal use case for Stackpress includes spending a couple 
         hours modeling, a couple seconds generating, a few minutes 
         configuring and the rest of the time designing the application.
-      </Paragraph>
+      </P>
 
-      <Header2>Features</Header2>
+      <H2>Features</H2>
 
-      <Paragraph>
+      <P>
         Some of main Stackpress Features include the following.
-      </Paragraph>
+      </P>
 
       <Table>
         <Thead className="theme-bg-bg2 text-left">Feature</Thead>
@@ -156,11 +151,11 @@ export function DocumentationBody() {
         </Trow>
       </Table>
 
-      <Header2>Philosophies</Header2>
+      <H2>Philosophies</H2>
 
-      <Paragraph>
+      <P>
         Stackpress is designed around the following concepts.
-      </Paragraph>
+      </P>
 
       <ul className="px-lh-30 px-px-20 px-w-767 flex flex-wrap rmd-block rmd-w-100-0">
         <li className="px-w-50-0">• Server-side first</li>

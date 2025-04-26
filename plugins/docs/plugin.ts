@@ -73,7 +73,18 @@ export default function plugin(server: Server) {
       'tooling/setup-permissions',
       'transform/customize-admin',
       'transform/form-idea',
-      'transform/generate-idea'
+      'transform/generate-idea',
+      'tutorial/plugin-architecture',
+      'tutorial/server-routes',
+      'tutorial/server-props',
+      'tutorial/context-provider',
+      'tutorial/view-engine',
+      'tutorial/client-engine',
+      'tutorial/database-engine',
+      'tutorial/code-engine',
+      'tutorial/authentication',
+      'tutorial/session',
+      'tutorial/api'
     ].map(route => {
       server.get(`/docs/${route}`, `@/plugins/docs/views/${route}`, -100);  
     });

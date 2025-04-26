@@ -112,6 +112,11 @@ export function LayoutLeft(props: {
           href: '/docs/develop/configure-project'
         },
         {
+          label: 'Customize Bootstrap',
+          search: '/docs/develop/customize-bootstrap',
+          href: '/docs/develop/customize-bootstrap'
+        },
+        {
           label: 'Develop Routes',
           search: '/docs/develop/develop-routes',
           href: '/docs/develop/develop-routes'
@@ -370,7 +375,7 @@ export function LayoutMain(props: {
 }) {
   const { open, children } = props;
   const left = open ? 'rmd-px-l-220' : 'rmd-px-l-0';
-  const right = props.right ? 'px-r-220' : 'px-r-0';
+  const right = props.right ? 'px-r-220 rlg-px-r-0' : 'px-r-0';
   const full = typeof open === 'undefined' ? 'px-l-0' : 'px-l-220';
   return (
     <main className={`theme-bg-bg0 duration-200 absolute px-b-0 px-t-60 ${full} ${left} ${right}`}>
@@ -383,7 +388,7 @@ export function LayoutRight({ children }: {
   children: ReactNode
 }) {
   return (
-    <aside className="duration-200 absolute px-w-220 px-b-0 px-t-0 px-t-60 px-z-100 px-r-0">
+    <aside className="duration-200 absolute px-w-220 px-b-0 px-t-0 px-t-60 px-z-100 px-r-0 rlg-hidden">
       <div className="px-h-100-0 theme-bg-bg3 flex flex-col">
         {children}
       </div>
@@ -412,8 +417,7 @@ export function LayoutApp(props: {
         pathname={pathname}
         open={left}
         toggle={toggleLeft}
-      >
-      </LayoutLeft>
+      />
       {props.right ? (<LayoutRight>{props.right}</LayoutRight>): null}
       <LayoutMain right={!!props.right} open={left}>{children}</LayoutMain>
     </div>

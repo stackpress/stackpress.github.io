@@ -11,8 +11,8 @@ import {
   Header3,
   Paragraph,
   Nav
-} from '../../Typography.js';
-import Layout from '../../Layout.js';
+} from '../../components/index.js';
+import Layout from '../../components/Layout.js';
 
 export function Head(props: ServerPageProps<ServerConfigProps>) {
   //props

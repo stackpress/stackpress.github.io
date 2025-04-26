@@ -6,16 +6,9 @@ import type {
 import { useState } from 'react';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import {
-  Header1,
-  Header2,
-  Header3,
-  Paragraph,
-  InlineCode,
-  Nav
-} from '../Typography.js';
+import { H1, H2, H3, P, C, Nav } from '../components/index.js';
 import Code from '../components/Code.js';
-import Layout from '../Layout.js';
+import Layout from '../components/Layout.js';
 
 export function Head(props: ServerPageProps<ServerConfigProps>) {
   //props
@@ -71,18 +64,18 @@ export function Body() {
   const [ install, setInstall ] = useState('npm');
   return (
     <main className="px-h-100-0 overflow-auto px-p-10">
-      <Header1>Getting Started</Header1>
-      <Paragraph>
+      <H1>Getting Started</H1>
+      <P>
         The following is a guide to get you started with Stackpress.
-      </Paragraph>
+      </P>
       
       <a id="system-requirements"></a>
-      <Header2>1. System Requirements</Header2>
+      <H2>1. System Requirements</H2>
 
-      <Paragraph>
+      <P>
         Before you begin, make sure your system meets the following 
         requirements.
-      </Paragraph>
+      </P>
 
       <ul className="px-lh-30 px-px-20">
         <li>• Node.js 22</li>
@@ -90,13 +83,13 @@ export function Body() {
       </ul>
 
       <a id="manual-installation"></a>
-      <Header2>2. Manual Installation</Header2>
+      <H2>2. Manual Installation</H2>
 
-      <Paragraph>
+      <P>
         To manually create a new Stackpress project, install the 
         following packages. These are needed for development, the build 
         process and live server.
-      </Paragraph>
+      </P>
 
       <div className="rounded-lg px-mx-10">
         <div className="theme-bg-bg3 flex items-center">
@@ -121,10 +114,10 @@ export function Body() {
         }</Code>
       </div>
 
-      <Paragraph>
+      <P>
         Next install the following development packages. These are 
         needed for development and the build process.
-      </Paragraph>
+      </P>
 
       <div className="rounded-lg px-mx-10 px-mb-20">
         <div className="theme-bg-bg3 flex items-center">
@@ -142,21 +135,53 @@ export function Body() {
           </div>
         </div>
         <Code copy language="bash" className={`theme-bg-bg1 ${install === 'npm' ? '' : 'hidden'}`}>{
-          'npm -i -D @types/react @types/react-dom typescript tsx @stackpress/idea-transformer fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
+          'npm -i -D @types/node @types/react @types/react-dom typescript tsx @stackpress/idea-transformer fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
         }</Code>
         <Code copy language="bash" className={`theme-bg-bg1 ${install === 'yarn' ? '' : 'hidden'}`}>{
-          'yarn add -D @types/react @types/react-dom typescript tsx @stackpress/idea-transformer fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
+          'yarn add --dev @types/node @types/react @types/react-dom typescript tsx @stackpress/idea-transformer fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
         }</Code>
       </div>
 
-      <Header3>2.1. Create Typescript Configuration</Header3>
+      <P>
+        Currently, the stable packages and versions that are recommended 
+        to use include the following.
+      </P>
 
-      <p className="px-px-10 px-pb-20">
+      <Code copy language="javascript" className="bg-black text-white px-mx-10 px-mb-20">{
+        JSON.stringify({
+          "dependencies": {
+            "frui": "0.1.6",
+            "react": "19.1.0",
+            "react-dom": "19.1.0",
+            "stackpress": "0.2.10"
+          },
+          "devDependencies": {
+            "@stackpress/idea-transformer": "0.5.15",
+            "@types/node": "22.14.1",
+            "@types/react": "19.1.2",
+            "@types/react-dom": "19.1.2",
+            "@vitejs/plugin-react": "4.4.1",
+            "fast-glob": "3.3.3",
+            "prettier": "3.5.3",
+            "ts-mocha": "11.1.0",
+            "ts-morph": "25.0.1",
+            "ts-node": "10.9.2",
+            "tsx": "4.19.3",
+            "typescript": "5.8.3",
+            "unocss": "66.0.0",
+            "vite": "6.3.2"
+          }
+        }, null, 2)
+      }</Code>
+
+      <H3>2.1. Create Typescript Configuration</H3>
+
+      <P>
         In your project root, create a new file called
-        <InlineCode>tsconfig.json</InlineCode> with the following code. 
+        <C>tsconfig.json</C> with the following code. 
         This file will configure your project to use the latest Ecmascript 
         Module Standard.
-      </p>
+      </P>
 
       <Code copy language="javascript" className="bg-black text-white px-mx-10 px-mb-20">{
         JSON.stringify({
@@ -172,30 +197,30 @@ export function Body() {
         }, null, 2)
       }</Code>
 
-      <Header3>2.2. Create Entry File</Header3>
+      <H3>2.2. Create Entry File</H3>
 
-      <p className="px-px-10 px-pb-20">
+      <P>
         In your project root, create a new file called
-        <InlineCode>index.ts</InlineCode> with the following code. This 
+        <C>index.ts</C> with the following code. This 
         file will be the entry point for your application, for now.
-      </p>
+      </P>
 
       <Code copy language="javascript" className="bg-black text-white px-mx-10 px-mb-20">{
         examples[0]
       }</Code>
 
-      <Header3>2.3. Run the Server</Header3>
+      <H3>2.3. Run the Server</H3>
 
       <ol className="px-px-10 px-lh-30 px-pb-20">
-        <li>2.3.1. In Terminal, run <InlineCode>npx tsx index.ts</InlineCode></li>
-        <li>2.3.2. On your browser, visit <InlineCode>http://localhost:3000?name=John</InlineCode></li>
+        <li>2.3.1. In Terminal, run <C>npx tsx index.ts</C></li>
+        <li>2.3.2. On your browser, visit <C>http://localhost:3000?name=John</C></li>
       </ol>
 
-      <Paragraph>
+      <P>
         This is enough to explore the Stackpress documentation, but to 
         learn how to maximize the framework it's recommended to peruse 
         the tutorials.
-      </Paragraph>
+      </P>
       
       <Nav
         prev={{ text: 'Introduction', href: '/docs/introduction' }}

@@ -27,7 +27,8 @@ export default function Code(props: {
     style = {
       background: 'transparent',
       color: 'inherit',
-      padding: '10px'
+      padding: '0 10px 10px',
+      width: '100%'
     }
   } = props;
 
@@ -54,8 +55,8 @@ export default function Code(props: {
     <div className={className} style={{ position: 'relative' }}>
       {copy && (
         <div style={{
-          float: 'right',
-          margin: '10px',
+          textAlign: 'right',
+          padding: '10px 10px 0 0',
           color: 'inherit',
           cursor: 'pointer',
           whiteSpace: 'nowrap'
