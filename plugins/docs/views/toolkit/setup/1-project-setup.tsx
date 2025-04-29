@@ -3,27 +3,26 @@ import type {
   ServerConfigProps, 
   ServerPageProps 
 } from 'stackpress/view/client';
-import { useLanguage } from 'r22n';
+import { useLanguage } from 'stackpress/view/client';
 //docs
-import {
-  Header1,
-  Header2,
-  Header3,
-  Paragraph,
-  Nav
-} from '../../components/index.js';
-import Layout from '../../components/Layout.js';
+import { H1, A, P, Nav } from '../../../components/index.js';
+import { Note, Layout } from '../../../components/index.js';
+import { Checkpoint as LastCheckpoint } from '../../tutorial/5-view-engine.js';
+
+export const Checkpoint = LastCheckpoint;
 
 export function Head(props: ServerPageProps<ServerConfigProps>) {
   //props
   const { request, styles = [] } = props;
   //hooks
+  //i18n
   const { _ } = useLanguage();
   //variables
-  const title = _('Setup Authentication');
+  const title = _('1. Project Setup - Tookit - Stackpress Tutorial');
   const description = _(
-    'describe'
+    'Setting up the project for the Stackpress toolkit.'
   );
+  //render
   return (
     <>
       <title>{title}</title>
@@ -45,50 +44,46 @@ export function Head(props: ServerPageProps<ServerConfigProps>) {
   )
 }
 
-export function Right() {
-  const { _ } = useLanguage();
-  return (
-    <menu className="px-m-0 px-px-10 px-py-20 px-h-100-40 overflow-auto">
-      <h6 className="theme-muted px-fs-14 px-mb-0 px-mt-0 px-pb-10 uppercase">
-        {_('On this page')}
-      </h6>
-      <nav className="px-fs-14 px-lh-32">
-        <a className="theme-tx0 block" href="#item1">
-          {_('item1')}
-        </a>
-      </nav>
-    </menu>
-  );
-}
-
 export function Body() {
+  //render
   return (
-    <main className="px-h-100-0 overflow-auto">
-      <Header1>Setup Authentication</Header1>
-      <Paragraph>
-        describe
-      </Paragraph>
-      <a id="item1"></a>
-      <Header2>Section</Header2>
-      <Header3>Subsection</Header3>
-      
+    <article className="px-h-100-0 overflow-auto px-px-20 px-pb-20 px-fs-15">
+      <H1>1. Project Setup</H1>
+
+      <P>
+        Let's make sure your project looks like the setup 
+        from the <A href="/docs/tutorial">main tutorial</A>.
+      </P>
+
+      <LastCheckpoint />
+
+      <Note>
+        Stackpress remains unopinionated and the plugin architecture is 
+        just one of many ways on how one can structure a project.
+      </Note>
+
+      <P>
+        The following sections will build on top of this setup to 
+        prevent re-explaining the core concepts.
+      </P>
+
       <Nav
-        prev={{ text: 'prev', href: '/docs/' }}
-        next={{ text: 'next', href: '/docs/' }}
+        prev={{ text: 'Toolkit Setup', href: '/docs/toolkit/setup' }}
+        next={{ text: '2. Client Engine', href: '/docs/toolkit/setup/2-client-engine' }}
       />
-    </main>
+    </article>
   );
 }
 
 export default function Page(props: ServerPageProps<ServerConfigProps>) {
   const { data, session, request, response } = props;
+  //render
   return (
     <Layout
       data={data}
       session={session}
       request={request}
       response={response}
-      right={<Right />}
     >
       <Body />
     </Layout>

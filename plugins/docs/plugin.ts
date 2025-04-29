@@ -38,6 +38,7 @@ export default function plugin(server: Server) {
     server.get('/docs', '@/plugins/docs/views/index', -100);
     server.get('/docs/introduction', '@/plugins/docs/views/index', -100);
     server.get('/docs/tutorial', '@/plugins/docs/views/tutorial/index', -100);
+    server.get('/docs/toolkit/setup', '@/plugins/docs/views/toolkit/setup/index', -100);
     [
       'getting-started',
       'deploy/build-project',
@@ -65,26 +66,24 @@ export default function plugin(server: Server) {
       'references/server',
       'references/status-map',
       'references/template-engine',
-      'tooling/add-translations',
-      'tooling/customize-terminal',
-      'tooling/setup-api',
-      'tooling/setup-authentication',
-      'tooling/setup-email',
-      'tooling/setup-permissions',
+      'toolkit/add-translations',
+      'toolkit/customize-terminal',
+      'toolkit/setup-api',
+      'toolkit/setup-authentication',
+      'toolkit/setup-email',
+      'toolkit/setup-permissions',
       'transform/customize-admin',
       'transform/form-idea',
       'transform/generate-idea',
-      'tutorial/plugin-architecture',
-      'tutorial/server-routes',
-      'tutorial/server-props',
-      'tutorial/context-provider',
-      'tutorial/view-engine',
-      'tutorial/client-engine',
-      'tutorial/database-engine',
-      'tutorial/code-engine',
-      'tutorial/authentication',
-      'tutorial/session',
-      'tutorial/api'
+      'tutorial/1-ecmascript',
+      'tutorial/2-plugin-architecture',
+      'tutorial/3-server-routes',
+      'tutorial/4-server-props',
+      'tutorial/5-view-engine',
+      'toolkit/setup/1-project-setup',
+      'toolkit/setup/2-client-engine',
+      'toolkit/setup/3-database-engine',
+      'toolkit/setup/4-context-provider'
     ].map(route => {
       server.get(`/docs/${route}`, `@/plugins/docs/views/${route}`, -100);  
     });

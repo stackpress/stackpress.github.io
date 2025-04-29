@@ -154,10 +154,19 @@ export function Note({ children }: { children: ReactNode }) {
   );
 }
 
+export function Congrats({ children }: { children: ReactNode }) {
+  return (
+    <Alert success outline curved className="px-lh-28">
+      <i className="inline-block px-mr-5 fas fa-check-circle" /> 
+      <SS>CONGRATS:</SS>&nbsp;{children}
+    </Alert>
+  );
+}
+
 export function Warn({ children }: { children: ReactNode }) {
   return (
-    <Alert info outline curved className="px-lh-24">
-      <i className="inline-block px-mr-5 fas fa-info-circle" /> 
+    <Alert warning outline curved className="px-lh-24">
+      <i className="inline-block px-mr-5 fas fa-exclamation-triangle" /> 
       <SS>WARNING:</SS>&nbsp;{children}
     </Alert>
   );

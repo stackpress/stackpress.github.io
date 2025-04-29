@@ -181,38 +181,43 @@ export function LayoutLeft(props: {
       ]
     },
     {
-      label: 'Tooling',
-      search: '/docs/tooling',
+      label: 'Toolkit',
+      search: '/docs/toolkit',
       children: [
         {
+          label: 'Toolkit Setup',
+          search: '/docs/toolkit/setup',
+          href: '/docs/toolkit/setup'
+        },
+        {
           label: 'Add Translations',
-          search: '/docs/tooling/add-translations',
-          href: '/docs/tooling/add-translations'
+          search: '/docs/toolkit/add-translations',
+          href: '/docs/toolkit/add-translations'
         },
         {
           label: 'Setup Email',
-          search: '/docs/tooling/setup-email',
-          href: '/docs/tooling/setup-email'
+          search: '/docs/toolkit/setup-email',
+          href: '/docs/toolkit/setup-email'
         },
         {
           label: 'Setup Authentication',
-          search: '/docs/tooling/setup-authentication',
-          href: '/docs/tooling/setup-authentication'
+          search: '/docs/toolkit/setup-authentication',
+          href: '/docs/toolkit/setup-authentication'
         },
         {
           label: 'Setup Permissions',
-          search: '/docs/tooling/setup-permissions',
-          href: '/docs/tooling/setup-permissions'
+          search: '/docs/toolkit/setup-permissions',
+          href: '/docs/toolkit/setup-permissions'
         },
         {
           label: 'Setup API',
-          search: '/docs/tooling/setup-api',
-          href: '/docs/tooling/setup-api'
+          search: '/docs/toolkit/setup-api',
+          href: '/docs/toolkit/setup-api'
         },
         {
           label: 'Customize Terminal',
-          search: '/docs/tooling/customize-terminal',
-          href: '/docs/tooling/customize-terminal'
+          search: '/docs/toolkit/customize-terminal',
+          href: '/docs/toolkit/customize-terminal'
         }
       ]
     },
@@ -333,7 +338,7 @@ export function LayoutLeft(props: {
           <i className="fas fa-chevron-left"></i>
         </button>
       </header>
-      <main className="theme-bg-bg1 flex-grow overflow-scroll px-pt-10 px-pb-40">
+      <main className="theme-bg-bg1 flex-grow overflow-auto px-pt-10 px-pb-40">
         {menu.map((section, i) => (
           <div key={i}>
             {section.label.length ? (
@@ -350,7 +355,7 @@ export function LayoutLeft(props: {
             {section.children.map((item, j) => {
               const left = section.label.length ? 'px-pl-40' : 'px-pl-20';
               return pathname.startsWith(section.search) ? (
-                pathname.startsWith(item.search) ? (
+                pathname === item.search ? (
                   <a key={j} className={`theme-tx1 block px-py-10 ${left} font-bold`} href={item.href}>
                     {_(item.label)}
                   </a>
