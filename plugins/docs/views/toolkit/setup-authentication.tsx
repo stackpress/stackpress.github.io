@@ -123,7 +123,7 @@ export function Body() {
         <Code>{examples[0]}</Code>
 
         <P>
-          The auth config required the following parameters.
+          The auth config requires the following parameters.
         </P>
 
         <div className="px-w-100-0 overflow-x-auto">

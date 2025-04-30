@@ -11,26 +11,8 @@ import { Nav, Code, Layout } from '../../components/index.js';
 
 const examples = [
 //0-------------------------------------------------------------------//
-`import { EventEmitter, ExpressEmitter } from 'stackpress/lib;
-
-const emitter1 = new EventEmitter();
-const emitter2 = new ExpressEmitter();
-`,
+``,
 //1-------------------------------------------------------------------//
-`emitter.on('say-hello', function Hello(name) {
-  console.log('Hello ' + name);
-})`,
-//2-------------------------------------------------------------------//
-`emitter.emit('say-hello', 'World')`,
-//3-------------------------------------------------------------------//
-`emitter.on('say-hello', function AfterHello(name) {
-  console.log('After Hello ' + name);
-}, 1)
-
-emitter.on('say-hello', function BeforeHello(name) {
-  console.log('Before Hello ' + name);
-}, -1)`,
-//3-------------------------------------------------------------------//
 ];
 
 export function Head(props: ServerPageProps<ServerConfigProps>) {
@@ -39,10 +21,9 @@ export function Head(props: ServerPageProps<ServerConfigProps>) {
   //hooks
   const { _ } = useLanguage();
   //variables
-  const title = _('EventEmitter Class - References - Stackpress Documentation');
+  const title = _('View Engine - References - Stackpress Documentation');
   const description = _(
-    'An event emitter is a pattern for making different parts of a '
-    + 'program talk to each other by sending and receiving messages.'
+    'desc'
   );
   return (
     <>
@@ -84,42 +65,21 @@ export function Right() {
 export function Body() {
   return (
     <article className="px-h-100-0 overflow-auto px-px-20 px-pb-20 px-fs-15">
-      <H1>EventEmitter Class</H1>
+      <H1>View Engine</H1>
 
       <P>
-        An event emitter is a pattern for making different parts of 
-        a program talk to each other by sending and receiving messages. 
-        It's a way to create responsive and interactive applications.
-        The <C>Server</C> and <C>Router</C> class extends from this 
-        class. There are two kinds of Emitter classes.
+        desc
       </P>
-
-      <ul className="px-lh-30 px-px-20">
-        <li>
-          • EventEmitter - The basic emitter. Event names only 
-          strings. Super fast.
-        </li>
-        <li>
-          • ExpressEmitter - Allows RegExp for event names. Extends 
-          from EventEmitter.
-        </li>
-      </ul>
-
-      <P>
-        You can instantiate this class in the following way.
-      </P>
-
-      <Code>{examples[0]}</Code>
 
       <a id="header2"></a>
-      <H2>1. Listening</H2>
+      <H2>1. Header2</H2>
 
       <section>
         <P>
           desc
         </P>
 
-        <Code>{`emitter.on('say-hello')`}</Code>
+        <Code>{examples[0]}</Code>
 
         <P>
           desc
@@ -155,12 +115,8 @@ export function Body() {
 
       <Nav
         prev={{ 
-          text: 'Configuration', 
-          href: '/docs/references/configuration' 
-        }}
-        next={{ 
-          text: 'Exception Class', 
-          href: '/docs/references/exception-class' 
+          text: 'Server Class', 
+          href: '/docs/references/server-class' 
         }}
       />
     </article>

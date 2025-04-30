@@ -258,69 +258,59 @@ export function LayoutLeft(props: {
       search: '/docs/references',
       children: [
         {
-          label: 'Schema Specs',
-          search: '/docs/references/schema-specs',
-          href: '/docs/references/schema-specs'
+          label: 'Client API',
+          search: '/docs/references/client-api',
+          href: '/docs/references/client-api'
         },
         {
-          label: 'Config Map',
-          search: '/docs/references/config-map',
-          href: '/docs/references/config-map'
+          label: 'Configuration',
+          search: '/docs/references/configuration',
+          href: '/docs/references/configuration'
         },
         {
-          label: 'Status Map',
-          search: '/docs/references/status-map',
-          href: '/docs/references/status-map'
+          label: 'EventEmitter Class',
+          search: '/docs/references/emitter-class',
+          href: '/docs/references/emitter-class'
         },
         {
-          label: 'Route Map',
-          search: '/docs/references/route-map',
-          href: '/docs/references/route-map'
+          label: 'Exception Class',
+          search: '/docs/references/exception-class',
+          href: '/docs/references/exception-class'
         },
         {
-          label: 'Server',
-          search: '/docs/references/server',
-          href: '/docs/references/server'
+          label: 'Query Builder',
+          search: '/docs/references/query-builder',
+          href: '/docs/references/query-builder'
         },
         {
-          label: 'Router',
-          search: '/docs/references/router',
-          href: '/docs/references/router'
+          label: 'Request Class',
+          search: '/docs/references/request-class',
+          href: '/docs/references/request-class'
         },
         {
-          label: 'Request',
-          search: '/docs/references/request',
-          href: '/docs/references/request'
+          label: 'Response Class',
+          search: '/docs/references/response-class',
+          href: '/docs/references/response-class'
         },
         {
-          label: 'Response',
-          search: '/docs/references/response',
-          href: '/docs/references/response'
+          label: 'Router Class',
+          search: '/docs/references/router-class',
+          href: '/docs/references/router-class'
         },
         {
-          label: 'Emitter',
-          search: '/docs/references/emitter',
-          href: '/docs/references/emitter'
+          label: 'Schema Specifications',
+          search: '/docs/references/schema-specifications',
+          href: '/docs/references/schema-specifications'
         },
         {
-          label: 'Queue',
-          search: '/docs/references/queue',
-          href: '/docs/references/queue'
+          label: 'Server Class',
+          search: '/docs/references/server-class',
+          href: '/docs/references/server-class'
         },
         {
-          label: 'Database Engine',
-          search: '/docs/references/database-engine',
-          href: '/docs/references/database-engine'
-        },
-        {
-          label: 'Template Engine',
-          search: '/docs/references/template-engine',
-          href: '/docs/references/template-engine'
-        },
-        {
-          label: 'Exception',
-          search: '/docs/references/exception',
-          href: '/docs/references/exception'
+          label: 'View Engine',
+          search: '/docs/references/view-engine',
+          href: '/docs/references/view-engine'
         },
       ]
     }

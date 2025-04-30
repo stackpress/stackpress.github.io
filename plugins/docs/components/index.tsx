@@ -33,9 +33,18 @@ export function Header2({ children }: { children: string }) {
 export function Header3({ children }: { children: string }) {
   const { _ } = useLanguage();
   return (
-    <h3 className="font-normal uppercase px-py-20">
+    <h3 className="font-normal uppercase px-pt-60">
       {_(children)}
     </h3>
+  );
+}
+
+export function Header4({ children }: { children: string }) {
+  const { _ } = useLanguage();
+  return (
+    <h4 className="font-semibold px-fs-12 uppercase px-py-5">
+      {_(children)}
+    </h4>
   );
 }
 
@@ -198,6 +207,7 @@ export function Nav({ next, prev }: {
 export const H1 = Header1;
 export const H2 = Header2;
 export const H3 = Header3;
+export const H4 = Header4;
 export const A = Link;
 export const H = Highlight;
 export const S = Semibold;
