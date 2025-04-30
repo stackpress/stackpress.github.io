@@ -6,7 +6,7 @@ import type {
 import { useLanguage } from 'stackpress/view/client';
 import { Table, Thead, Trow, Tcol } from 'frui/element/Table';
 //docs
-import { H1, H2, C, P, SS } from '../../components/index.js';
+import { H1, H2, C, P, E, SS } from '../../components/index.js';
 import { Nav, Code, Layout } from '../../components/index.js';
 
 export function Head(props: ServerPageProps<ServerConfigProps>) {
@@ -49,44 +49,26 @@ export function Right() {
         {_('On this page')}
       </h6>
       <nav className="px-fs-14 px-lh-32">
-        <a className="theme-tx0 block" href="#admin-config">
-          {_('1. Admin Config')}
+        <a className="theme-tx0 block" href="#model-attributes">
+          {_('1. Model Attributes')}
         </a>
-        <a className="theme-tx0 block" href="#api-config">
-          {_('2. API Config')}
+        <a className="theme-tx0 block" href="#validation-attributes">
+          {_('2. Validation Attributes')}
         </a>
-        <a className="theme-tx0 block" href="#auth-config">
-          {_('3. Auth Config')}
+        <a className="theme-tx0 block" href="#field-attributes">
+          {_('3. Field Attributes')}
         </a>
-        <a className="theme-tx0 block" href="#brand-config">
-          {_('4. Brand Config')}
+        <a className="theme-tx0 block" href="#filter-attributes">
+          {_('4. Filter Attributes')}
         </a>
-        <a className="theme-tx0 block" href="#client-config">
-          {_('5. Client Config')}
+        <a className="theme-tx0 block" href="#span-attributes">
+          {_('5. Span Attributes')}
         </a>
-        <a className="theme-tx0 block" href="#cookie-config">
-          {_('6. Cookie Config')}
+        <a className="theme-tx0 block" href="#list-attributes">
+          {_('6. List Attributes')}
         </a>
-        <a className="theme-tx0 block" href="#database-config">
-          {_('7. Database Config')}
-        </a>
-        <a className="theme-tx0 block" href="#email-config">
-          {_('8. Email Config')}
-        </a>
-        <a className="theme-tx0 block" href="#language-config">
-          {_('9. Language Config')}
-        </a>
-        <a className="theme-tx0 block" href="#server-config">
-          {_('10. Server Config')}
-        </a>
-        <a className="theme-tx0 block" href="#session-config">
-          {_('11. Session Config')}
-        </a>
-        <a className="theme-tx0 block" href="#view-config">
-          {_('12. View Config')}
-        </a>
-        <a className="theme-tx0 block" href="#typings">
-          {_('13. Typings')}
+        <a className="theme-tx0 block" href="#view-attributes">
+          {_('7. View Attributes')}
         </a>
       </nav>
     </menu>
@@ -106,13 +88,15 @@ export function Body() {
 
       {/*------------------------------------------------------------*/}
 
-      <a id="model-spec"></a>
-      <H2>1. Model Spec</H2>
+      <a id="model-attributes"></a>
+      <H2>1. Model Attributes</H2>
 
       <section>
         <P>
-          The following attributes can be applied to model types in an 
-          idea file.
+          The following attributes can be applied to models and types 
+          defined in an <SS>Idea</SS> file. These attributes are used to 
+          describe the model and how it should be represented in the 
+          admin interface.
         </P>
 
         <Code>{'model User @icon("user") @label("User" "Users") {}'}</Code>
@@ -120,7 +104,7 @@ export function Body() {
         <div className="px-w-100-0 overflow-x-auto">
           <Table>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attribute</Thead>
-            <Thead wrap2 className="theme-bg-bg2 text-left">Description</Thead>
+            <Thead wrap3 className="theme-bg-bg2 text-left">Description</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attributes</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Example</Thead>
             <Trow>
@@ -284,13 +268,14 @@ export function Body() {
 
       {/*------------------------------------------------------------*/}
 
-      <a id="validation-spec"></a>
-      <H2>2. Validation Spec</H2>
+      <a id="validation-attributes"></a>
+      <H2>2. Validation Attributes</H2>
 
       <section>
         <P>
-          The following validation attributes can be applied to model 
-          columns in an idea file.
+          The following validation attributes can be applied to model and 
+          type columns defined in an <SS>Idea</SS> file. These attributes 
+          are used validate form submissions <E>(create and update)</E>.
         </P>
 
         <Code>{'name String @is.required @is.cgt(10)'}</Code>
@@ -298,7 +283,7 @@ export function Body() {
         <div className="px-w-100-0 overflow-x-auto">
           <Table>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attribute</Thead>
-            <Thead wrap2 className="theme-bg-bg2 text-left">Description</Thead>
+            <Thead wrap3 className="theme-bg-bg2 text-left">Description</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Example</Thead>
             <Trow>
               <Tcol className="text-left"><C>{'@is.required'}</C></Tcol>
@@ -529,13 +514,16 @@ export function Body() {
 
       {/*------------------------------------------------------------*/}
 
-      <a id="field-spec"></a>
-      <H2>3. Field Spec</H2>
+      <a id="field-attributes"></a>
+      <H2>3. Field Attributes</H2>
 
       <section>
         <P>
-          The following fields can be applied to model columns in an 
-          idea file.
+          The following field attributes can be applied to a model 
+          and type columns defined in an <SS>Idea</SS> file. These
+          attributes are used to describe how the column should be
+          represented in a form <E>(create and update)</E>. Logically,
+          only one field attribute should be used per column.
         </P>
 
         <Code>{'name String @field.text'}</Code>
@@ -543,7 +531,7 @@ export function Body() {
         <div className="px-w-100-0 overflow-x-auto">
           <Table>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attribute</Thead>
-            <Thead wrap2 className="theme-bg-bg2 text-left">Description</Thead>
+            <Thead wrap3 className="theme-bg-bg2 text-left">Description</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attributes</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Example</Thead>
             <Trow>
@@ -804,13 +792,16 @@ export function Body() {
 
       {/*------------------------------------------------------------*/}
 
-      <a id="filter-spec"></a>
-      <H2>4. Filter Spec</H2>
+      <a id="filter-attributes"></a>
+      <H2>4. Filter Attributes</H2>
 
       <section>
         <P>
-          The following filter fields can be applied to model columns in 
-          an idea file.
+          The following filter attributes can be applied to model 
+          columns defined in an <SS>Idea</SS> file. These attributes 
+          are used to describe how the column should be represented in 
+          a search filter form. Logically, only one filter attribute 
+          should be used per column.
         </P>
 
         <Code>{'name String @field.text'}</Code>
@@ -818,7 +809,7 @@ export function Body() {
         <div className="px-w-100-0 overflow-x-auto">
           <Table>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attribute</Thead>
-            <Thead wrap2 className="theme-bg-bg2 text-left">Description</Thead>
+            <Thead wrap3 className="theme-bg-bg2 text-left">Description</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attributes</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Example</Thead>
             <Trow>
@@ -990,14 +981,23 @@ export function Body() {
 
       {/*------------------------------------------------------------*/}
 
-      <a id="spans"></a>
-      <H2>5. Spans</H2>
+      <a id="span-attributes"></a>
+      <H2>5. Span Attributes</H2>
 
       <section>
+        <P>
+          The following span attributes can be applied to model 
+          columns defined in an <SS>Idea</SS> file. These attributes 
+          are used to describe how the column should be represented in 
+          a search filter form. Spans are field that represent a range 
+          <E>(from and to)</E>. This is good for numbers and dates. 
+          Logically, only one span attribute should be used per column.
+        </P>
+
         <div className="px-w-100-0 overflow-x-auto">
           <Table>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attribute</Thead>
-            <Thead wrap2 className="theme-bg-bg2 text-left">Description</Thead>
+            <Thead wrap3 className="theme-bg-bg2 text-left">Description</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attributes</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Example</Thead>
             <Trow>
@@ -1096,13 +1096,16 @@ export function Body() {
 
       {/*------------------------------------------------------------*/}
 
-      <a id="list-spec"></a>
-      <H2>6. List Spec</H2>
+      <a id="list-attributes"></a>
+      <H2>6. List Attributes</H2>
 
       <section>
         <P>
-          The following list format fields can be applied to model columns 
-          in an idea file.
+          The following list format fields can be applied to model 
+          columns defined in an <SS>Idea</SS> file. These attributes are 
+          used to describe how the column should be represented in a
+          formatted list of results <E>(ie. table, search results page)</E>. 
+          Logically, only one list attribute should be used per column.
         </P>
 
         <Code>{'created Datetime @list.date({ locale "en" })'}</Code>
@@ -1110,7 +1113,7 @@ export function Body() {
         <div className="px-w-100-0 overflow-x-auto">
           <Table>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attribute</Thead>
-            <Thead wrap2 className="theme-bg-bg2 text-left">Description</Thead>
+            <Thead wrap3 className="theme-bg-bg2 text-left">Description</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attributes</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Example</Thead>
             <Trow>
@@ -1467,13 +1470,16 @@ export function Body() {
       
       {/*------------------------------------------------------------*/}
 
-      <a id="view-spec"></a>
-      <H2>7. View Spec</H2>
+      <a id="view-attributes"></a>
+      <H2>7. View Attributes</H2>
 
       <section>
         <P>
-          The following view format fields can be applied to model columns 
-          in an idea file.
+          The following view format fields can be applied to model 
+          columns defined in an <SS>Idea</SS> file. These attributes are
+          used to describe how the column should be represented in a
+          formatted result view <E>(ie. detail page)</E>. Logically, 
+          only one view attribute should be used per column.
         </P>
 
         <Code>{'created Datetime @view.date({ locale "en" })'}</Code>
@@ -1481,7 +1487,7 @@ export function Body() {
         <div className="px-w-100-0 overflow-x-auto">
           <Table>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attribute</Thead>
-            <Thead wrap2 className="theme-bg-bg2 text-left">Description</Thead>
+            <Thead wrap3 className="theme-bg-bg2 text-left">Description</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Attributes</Thead>
             <Thead wrap2 className="theme-bg-bg2 text-left">Example</Thead>
             <Trow>

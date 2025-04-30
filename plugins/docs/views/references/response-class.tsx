@@ -5,7 +5,7 @@ import type {
 } from 'stackpress/view/client';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import { H1, H2, H4, P, C, E, SS } from '../../components/index.js';
+import { H1, H2, H4, P, C, E, A, SS } from '../../components/index.js';
 import { Nav, Code, Layout } from '../../components/index.js';
 
 const examples = [
@@ -307,9 +307,10 @@ export function Body() {
 
       <section>
         <P>
-          Returns the response data controller. This is the data is 
-          arbitrary data not part of the serialized response. This 
-          is normally used as extra view props.
+          A <A href="/docs/references/data/callable-nest">callable nest</A> that 
+          manages the response data. This is the data is arbitrary data 
+          not part of the serialized response. This is normally used as 
+          extra view props.
         </P>
 
         <Code>{examples[1]}</Code>
@@ -350,7 +351,8 @@ export function Body() {
 
       <section>
         <P>
-          Returns a map of sub-errors.
+          A <A href="/docs/references/data/callable-nest">callable nest</A> that 
+          manages the sub-errors.
         </P>
 
         <Code>{'const errors = response.errors'}</Code>
@@ -363,7 +365,8 @@ export function Body() {
 
       <section>
         <P>
-          The response headers data controller. 
+          A <A href="/docs/references/data/callable-map">callable map</A> that 
+          manages the response headers. 
         </P>
 
         <Code>{examples[3]}</Code>
@@ -432,7 +435,8 @@ export function Body() {
 
       <section>
         <P>
-          The response session data controller. When using 
+          A <A href="/docs/references/data/callable-session">callable session</A> that 
+          manages the response session data. When using 
           the <C>HTTP</C> or <C>WHATWG</C> dispatcher, will set the 
           cookies headers for the browser.
         </P>

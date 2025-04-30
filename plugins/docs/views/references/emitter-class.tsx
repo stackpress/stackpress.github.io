@@ -153,8 +153,8 @@ export function Body() {
       <H1>EventEmitter Class</H1>
 
       <P>
-        The following describes the properties and methods of the
-        <SS>EventEmitter</SS> class. The <SS>EventEmitter</SS> class 
+        The following describes the properties and methods of 
+        the <SS>EventEmitter</SS> class. The <SS>EventEmitter</SS> class 
         is a base class for creating event-driven applications. It works 
         by managing the following event object during each event loop. 
       </P>

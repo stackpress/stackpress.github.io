@@ -345,7 +345,7 @@ export function LayoutLeft(props: {
             {section.children.map((item, j) => {
               const left = section.label.length ? 'px-pl-40' : 'px-pl-20';
               return pathname.startsWith(section.search) ? (
-                pathname === item.search ? (
+                (pathname === item.search || pathname.startsWith(`${item.search}/`)) ? (
                   <a key={j} className={`theme-tx1 block px-py-10 ${left} font-bold`} href={item.href}>
                     {_(item.label)}
                   </a>

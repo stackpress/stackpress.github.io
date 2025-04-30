@@ -521,7 +521,7 @@ export function Head(props: ServerPageProps<ServerConfigProps>) {
   //variables
   const title = _('Configuration - References - Stackpress Documentation');
   const description = _(
-    'desc'
+    'The following documents the possible configurations of Stackpress.'
   );
   return (
     <>

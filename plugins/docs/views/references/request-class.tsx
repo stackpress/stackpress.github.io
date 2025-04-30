@@ -5,7 +5,7 @@ import type {
 } from 'stackpress/view/client';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import { H1, H2, P, C, SS } from '../../components/index.js';
+import { H1, H2, P, C, A, SS } from '../../components/index.js';
 import { Nav, Code, Layout } from '../../components/index.js';
 
 const examples = [
@@ -225,7 +225,9 @@ export function Body() {
 
       <section>
         <P>
-          The raw request body.
+          The raw request body. The body can be a type 
+          of <C>string</C>, <C>Buffer</C>, <C>UInt8Array</C>, <C>Object</C>, <C>Array</C>, 
+          or <C>null</C>.
         </P>
 
         <Code>{'const body = request.body'}</Code>
@@ -238,7 +240,8 @@ export function Body() {
 
       <section>
         <P>
-          The data controller. This combines the inputs from URL 
+          A <A href="/docs/references/data/callable-nest">callable nest</A> that 
+          manages the request data. This combines the inputs from URL 
           search queries, POST data and URL parameters respectively.
         </P>
 
@@ -252,7 +255,8 @@ export function Body() {
 
       <section>
         <P>
-          The request headers controller. 
+        A <A href="/docs/references/data/callable-map">callable map</A> that 
+        manages the request headers. 
         </P>
 
         <Code>{examples[1]}</Code>
@@ -318,7 +322,8 @@ export function Body() {
 
       <section>
         <P>
-          The request POST data controller. 
+          A <A href="/docs/references/data/callable-nest">callable nest</A> that 
+          manages the request POST data. 
         </P>
 
         <Code>{examples[3]}</Code>
@@ -331,7 +336,8 @@ export function Body() {
 
       <section>
         <P>
-          The request query controller. 
+        A <A href="/docs/references/data/callable-nest">callable nest</A> that 
+        manages the request query. 
         </P>
 
         <Code>{examples[4]}</Code>
@@ -358,7 +364,8 @@ export function Body() {
 
       <section>
         <P>
-          The request session data controller. 
+          A <A href="/docs/references/data/callable-session">callable session</A> that 
+          manages the request session data. 
         </P>
 
         <Code>{examples[5]}</Code>

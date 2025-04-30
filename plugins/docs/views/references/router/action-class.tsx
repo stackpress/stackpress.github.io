@@ -5,7 +5,7 @@ import type {
 } from 'stackpress/view/client';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import { H1, H2, H4, P, C } from '../../../components/index.js';
+import { H1, H2, H4, P, C, A, SS } from '../../../components/index.js';
 import { Nav, Code, Layout } from '../../../components/index.js';
 
 const examples = [
@@ -22,9 +22,11 @@ export function Head(props: ServerPageProps<ServerConfigProps>) {
   //hooks
   const { _ } = useLanguage();
   //variables
-  const title = _('Router Action Class - References - Stackpress Documentation');
+  const title = _('Action Router Class - References - Stackpress Documentation');
   const description = _(
-    'desc'
+    'The ActionRouter class is an extension to the main router, that '
+    + 'handles actions that are functions accepting a Request, Response, '
+    + 'and Server object argument respectively.'
   );
   return (
     <>
@@ -52,11 +54,65 @@ export function Right() {
   return (
     <menu className="px-m-0 px-px-10 px-py-20 px-h-100-40 overflow-auto">
       <h6 className="theme-muted px-fs-14 px-mb-0 px-mt-0 px-pb-10 uppercase">
-        {_('On this page')}
+        {_('Properties')}
       </h6>
       <nav className="px-fs-14 px-lh-32">
-        <a className="theme-tx0 block" href="#header2">
-          {_('1. Header2')}
+        <a className="theme-tx0 block" href="#listeners">
+          {_('listeners')}
+        </a>
+        <a className="theme-tx0 block" href="#routes">
+          {_('routes')}
+        </a>
+      </nav>
+
+      <h6 className="theme-muted px-fs-14 px-mb-0 px-mt-40 px-pb-10 uppercase">
+        {_('Methods')}
+      </h6>
+      <nav className="px-fs-14 px-lh-32">
+        <a className="theme-tx0 block" href="#all">
+          {_('all()')}
+        </a>
+        <a className="theme-tx0 block" href="#connect">
+          {_('connect()')}
+        </a>
+        <a className="theme-tx0 block" href="#delete">
+          {_('delete()')}
+        </a>
+        <a className="theme-tx0 block" href="#emit">
+          {_('emit()')}
+        </a>
+        <a className="theme-tx0 block" href="#event-name">
+          {_('eventName()')}
+        </a>
+        <a className="theme-tx0 block" href="#get">
+          {_('get()')}
+        </a>
+        <a className="theme-tx0 block" href="#head">
+          {_('head()')}
+        </a>
+        <a className="theme-tx0 block" href="#on">
+          {_('on()')}
+        </a>
+        <a className="theme-tx0 block" href="#options">
+          {_('options()')}
+        </a>
+        <a className="theme-tx0 block" href="#patch">
+          {_('patch()')}
+        </a>
+        <a className="theme-tx0 block" href="#post">
+          {_('post()')}
+        </a>
+        <a className="theme-tx0 block" href="#put">
+          {_('put()')}
+        </a>
+        <a className="theme-tx0 block" href="#route">
+          {_('route()')}
+        </a>
+        <a className="theme-tx0 block" href="#trace">
+          {_('trace()')}
+        </a>
+        <a className="theme-tx0 block" href="#use">
+          {_('use()')}
         </a>
       </nav>
     </menu>
@@ -66,11 +122,19 @@ export function Right() {
 export function Body() {
   return (
     <article className="px-h-100-0 overflow-auto px-px-20 px-pb-20 px-fs-15">
-      <H1>Router Action Class</H1>
+      <H1>Action Router Class</H1>
 
       <P>
-        desc
+        The <SS>ActionRouter</SS> class is an extension of 
+        the <A href="/docs/references/router-class">main router</A>, 
+        that handles actions that are functions accepting
+        a <A href="/docs/references/request-class">Request</A> object, 
+        a <A href="/docs/references/request-class">Response</A> object, 
+        and a <A href="/docs/references/request-class">Server</A> object 
+        argument respectively.
       </P>
+
+      <Code>{`router.action.post('/', (req, res, ctx) => {})`}</Code>
 
       {/*------------------------------------------------------------*/}
                   

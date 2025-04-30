@@ -5,7 +5,7 @@ import type {
 } from 'stackpress/view/client';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import { H1, H2, H4, P, C, SS } from '../../components/index.js';
+import { H1, H2, H4, P, C, A, SS } from '../../components/index.js';
 import { Nav, Code, Layout } from '../../components/index.js';
 
 const examples = [
@@ -73,11 +73,80 @@ export function Right() {
   return (
     <menu className="px-m-0 px-px-10 px-py-20 px-h-100-40 overflow-auto">
       <h6 className="theme-muted px-fs-14 px-mb-0 px-mt-0 px-pb-10 uppercase">
-        {_('On this page')}
+        {_('Properties')}
       </h6>
       <nav className="px-fs-14 px-lh-32">
-        <a className="theme-tx0 block" href="#header2">
-          {_('1. Header2')}
+        <a className="theme-tx0 block" href="#entries">
+          {_('entries')}
+        </a>
+        <a className="theme-tx0 block" href="#imports">
+          {_('imports')}
+        </a>
+        <a className="theme-tx0 block" href="#listeners">
+          {_('listeners')}
+        </a>
+        <a className="theme-tx0 block" href="#routes">
+          {_('routes')}
+        </a>
+        <a className="theme-tx0 block" href="#views">
+          {_('views')}
+        </a>
+      </nav>
+
+      <h6 className="theme-muted px-fs-14 px-mb-0 px-mt-40 px-pb-10 uppercase">
+        {_('Methods')}
+      </h6>
+      <nav className="px-fs-14 px-lh-32">
+        <a className="theme-tx0 block" href="#all">
+          {_('all()')}
+        </a>
+        <a className="theme-tx0 block" href="#connect">
+          {_('connect()')}
+        </a>
+        <a className="theme-tx0 block" href="#delete">
+          {_('delete()')}
+        </a>
+        <a className="theme-tx0 block" href="#emit">
+          {_('emit()')}
+        </a>
+        <a className="theme-tx0 block" href="#get">
+          {_('get()')}
+        </a>
+        <a className="theme-tx0 block" href="#head">
+          {_('head()')}
+        </a>
+        <a className="theme-tx0 block" href="#on">
+          {_('on()')}
+        </a>
+        <a className="theme-tx0 block" href="#options">
+          {_('options()')}
+        </a>
+        <a className="theme-tx0 block" href="#patch">
+          {_('patch()')}
+        </a>
+        <a className="theme-tx0 block" href="#post">
+          {_('post()')}
+        </a>
+        <a className="theme-tx0 block" href="#put">
+          {_('put()')}
+        </a>
+        <a className="theme-tx0 block" href="#request">
+          {_('request()')}
+        </a>
+        <a className="theme-tx0 block" href="#resolve">
+          {_('resolve()')}
+        </a>
+        <a className="theme-tx0 block" href="#response">
+          {_('response()')}
+        </a>
+        <a className="theme-tx0 block" href="#route">
+          {_('route()')}
+        </a>
+        <a className="theme-tx0 block" href="#trace">
+          {_('trace()')}
+        </a>
+        <a className="theme-tx0 block" href="#use">
+          {_('use()')}
         </a>
       </nav>
     </menu>
@@ -91,17 +160,30 @@ export function Body() {
 
       <P>
         The router class allows the registration of routes and handles 
-        requests. For predictability, the router only passes 
-        the <C>Request</C>, <C>Response</C>, and <C>Server</C> objects 
-        to each action function. <SS>Stackpress</SS> route actions can 
-        be defined in four ways.
+        requests. It extends 
+        the <A href="/docs/references/emitter-class">EventEmitter</A> class. 
+        For predictability, the router only passes 
+        a <A href="/docs/references/request-class">Request</A> object, 
+        a <A href="/docs/references/request-class">Response</A> object, 
+        and a <A href="/docs/references/request-class">Server</A> object 
+        argument respectively. objects to each action 
+        function. <SS>Stackpress</SS> route actions can be defined in 
+        four ways.
       </P>
 
       <ul className="px-lh-30 px-px-20">
-        <li>• Action routing - <C>{`router.action.post('/', (req, res, ctx) => {})`}</C></li>
-        <li>• Entry routing - <C>{`router.entry.post('/', '/path/to/entry')`}</C></li>
-        <li>• Import routing - <C>{`router.import.post('/', () => import('/path/to/entry.js'))`}</C></li>
-        <li>• View routing - <C>{`router.view.post('/', '@/path/to/entry')`}</C></li>
+        <li>
+          • <A href="/docs/references/router/action-class">Action routing</A>
+        </li>
+        <li>
+          • <A href="/docs/references/router/entry-class">Entry routing</A>
+        </li>
+        <li>
+          • <A href="/docs/references/router/import-class">Import routing</A>
+        </li>
+        <li>
+          • <A href="/docs/references/router/view-class">View routing</A>
+        </li>
       </ul>
 
       {/*------------------------------------------------------------*/}
