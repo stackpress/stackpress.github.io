@@ -9,11 +9,12 @@
     "stackpress"
   ],
   "scripts": {
-    "build": "tsx build.ts",
-    "build:docs": "dotenv -e .env -- tsx scripts/build.ts",
-    "dev": "dotenv -e .env -- stackpress config/develop serve -v",
-    "emit": "dotenv -e .env -- stackpress config/develop emit -v",
-    "preview": "dotenv -e .env -- stackpress config/preview serve -v"
+    "build": "yarn build:client && yarn build:docs",
+    "build:client": "tsx build.ts",
+    "build:docs": "tsx scripts/build.ts",
+    "dev": "stackpress config/develop serve -v",
+    "emit": "stackpress config/develop emit -v",
+    "preview": "stackpress config/preview serve -v"
   },
   "dependencies": {
     "frui": "0.1.6",
