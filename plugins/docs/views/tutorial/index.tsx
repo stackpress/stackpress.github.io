@@ -50,11 +50,11 @@ export function Body() {
     <article className="px-h-100-0 overflow-auto px-px-20 px-pb-20 px-fs-15">
       <H1>Tutorial</H1>
       <P>
-        Stackpress is a vast library with built-in toolkits and many 
-        features, making it difficult to explain in one go. The purpose 
-        of this tutorial is to get a basic understanding of the core 
-        framework and give ideas on how to structure projects. Its 
-        specific objectives are the following.
+        <SS>Stackpress</SS> is a vast library with built-in toolkits 
+        and many features, making it difficult to explain in one go. 
+        The purpose of this tutorial is to get a basic understanding 
+        of the core framework and give ideas on how to structure 
+        projects. Its specific objectives are the following.
       </P>
 
       <ul className="px-lh-30 px-px-20">

@@ -6,7 +6,7 @@ import type {
 import { useLanguage } from 'stackpress/view/client';
 //docs
 import { H1, H2, P, C, SS } from '../../components/index.js';
-import { Nav, Note, Code, Layout } from '../../components/index.js';
+import { Nav, Code, Layout } from '../../components/index.js';
 
 const examples = [
 //0-------------------------------------------------------------------//

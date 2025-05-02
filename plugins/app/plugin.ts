@@ -14,6 +14,6 @@ export default function plugin(server: Server) {
     });
   });
   server.on('route', async _ => {
-    server.all('/', '@/plugins/app/views/home', -100);
+    server.get('/', '@/plugins/app/views/home', -100);
   });
 };

@@ -4,6 +4,7 @@ import path from 'node:path';
 export type { Config } from 'stackpress/types';
 
 export const cwd = process.cwd();
+export const docs = path.join(cwd, 'docs');
 export const build = path.join(cwd, '.build');
 export const assets = path.join(cwd, 'public');
 

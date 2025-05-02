@@ -379,10 +379,10 @@ export function Right() {
           {_('5.4. Update View')}
         </a>
         <a className="theme-tx1 block" href="#run-server">
-          {_('5.4. Run the Server')}
+          {_('5.5. Run the Server')}
         </a>
         <a className="theme-tx1 block" href="#checkpoint">
-          {_('5.5. Check Point')}
+          {_('5.6. Check Point')}
         </a>
       </nav>
     </menu>
@@ -526,7 +526,7 @@ export function Body() {
       {/*------------------------------------------------------------*/}
       
       <a id="run-server"></a>
-      <H2>5.4. Run the Server</H2>
+      <H2>5.5. Run the Server</H2>
       
       <ol className="px-px-10 px-lh-30 px-py-20">
         <li>1. In Terminal, run <B>npm run dev</B></li>
@@ -536,7 +536,7 @@ export function Body() {
       {/*------------------------------------------------------------*/}
 
       <a id="checkpoint"></a>
-      <H2>5.5. Check Point</H2>
+      <H2>5.6. Check Point</H2>
 
       <section>
         <P>

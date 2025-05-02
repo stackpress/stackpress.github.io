@@ -102,7 +102,7 @@ export function LayoutLeft(props: {
         }
       ]
     },
-    {
+    /*{
       label: 'Develop',
       search: '/docs/develop',
       children: [
@@ -179,7 +179,7 @@ export function LayoutLeft(props: {
           href: '/docs/transform/customize-admin'
         }
       ]
-    },
+    },*/
     {
       label: 'Toolkit',
       search: '/docs/toolkit',
@@ -221,7 +221,7 @@ export function LayoutLeft(props: {
         }
       ]
     },
-    {
+    /*{
       label: 'Deploy',
       search: '/docs/deploy',
       children: [
@@ -252,7 +252,7 @@ export function LayoutLeft(props: {
           href: '/docs/plugins/create-plugins'
         }
       ]
-    },
+    },*/
     {
       label: 'References',
       search: '/docs/references',

@@ -46,11 +46,20 @@ export function Right() {
   return (
     <menu className="px-m-0 px-px-10 px-py-20 px-h-100-40 overflow-auto">
       <h6 className="theme-muted px-fs-14 px-mb-0 px-mt-0 px-pb-10 uppercase">
-        {_('On this page')}
+        {_('Properties')}
       </h6>
       <nav className="px-fs-14 px-lh-32">
-        <a className="theme-tx0 block" href="#header2">
-          {_('1. Header2')}
+        <a className="theme-tx0 block" href="#config">
+          {_('config')}
+        </a>
+        <a className="theme-tx0 block" href="#registry">
+          {_('registry')}
+        </a>
+        <a className="theme-tx0 block" href="#model">
+          {_('model')}
+        </a>
+        <a className="theme-tx0 block" href="#fieldset">
+          {_('fieldset')}
         </a>
       </nav>
     </menu>

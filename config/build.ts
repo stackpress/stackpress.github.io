@@ -18,9 +18,11 @@ export const config: Config = {
     //reactus specific settings
     engine: {
       //path where to save assets (css, images, etc)
-      assetPath: path.join(common.assets, 'assets'),
+      assetPath: path.join(common.docs, 'assets'),
       //path where to save the client scripts (js)
-      clientPath: path.join(common.assets, 'client'),
+      clientPath: path.join(common.docs, 'client'),
+      //path where to save the server scripts (js)
+      pagePath: path.join(common.build, 'pages'),
       //filepath to a global css file
       cssFiles: [ 
         'frui/frui.css', 

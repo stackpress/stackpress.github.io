@@ -8,7 +8,8 @@
   "include": [ 
     "config/**/*.ts", 
     "plugins/**/*.ts", 
-    "plugins/**/*.tsx"
+    "plugins/**/*.tsx", 
+    "scripts/**/*.ts"
 , "archives/api.tsx"  ],
   "exclude": [ "dist", "node_modules", "tests" ]
 }
