@@ -76,7 +76,7 @@ export function App(props: PanelAppProps) {
 }
 
 export default function Layout(props: LayoutPanelProps) {
-  const { 
+  let { 
     data,
     session,
     request,
@@ -84,7 +84,22 @@ export default function Layout(props: LayoutPanelProps) {
     children 
   } = props;
   //unload flash message
-  useEffect(unload, []);
+  useEffect(() => {
+    if (!request) {
+      request = {} as any;
+    }
+    if (request && !request.session) {
+      request.session = {} as any;
+    }
+    if (request?.session && !request.session.theme) {
+      const dark = document.cookie.includes('theme=dark');
+      request.session.theme = dark ? 'dark': 'light';
+    }
+    unload();
+  }, []);
+  if (!request?.session?.theme) {
+    return null;
+  }
   return (
     <LayoutProvider 
       data={data}

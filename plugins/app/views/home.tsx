@@ -139,83 +139,83 @@ export default function HomePage(props: ServerPageProps) {
                   </h4>
                   <div className="overflow-x-auto">
                     <Table>
-                      <Thead noWrap className="theme-bg-bg2 theme-info text-right cursor-pointer">
+                      <Thead noWrap className="theme-bg-bg2 theme-info text-right cursor-pointer border-0">
                         {_('ID')}
                         <i className="inline-block px-ml-10 fas fa-sort" />
                       </Thead>
-                      <Thead className="theme-bg-bg2 text-left">
+                      <Thead className="theme-bg-bg2 text-left border-0">
                         {_('Name')}
                       </Thead>
-                      <Thead className="theme-bg-bg2 text-center">
+                      <Thead className="theme-bg-bg2 text-center border-0">
                         {_('Role')}
                       </Thead>
-                      <Thead className="theme-bg-bg2 text-left">
+                      <Thead className="theme-bg-bg2 text-left border-0">
                         {_('Tags')}
                       </Thead>
-                      <Thead className="theme-bg-bg2 text-left">
+                      <Thead className="theme-bg-bg2 text-left border-0">
                         {_('Country')}
                       </Thead>
-                      <Thead className="theme-bg-bg2 text-center">
+                      <Thead className="theme-bg-bg2 text-center border-0">
                         {_('Active')}
                       </Thead>
-                      <Thead noWrap className="theme-bg-bg2 theme-info text-right cursor-pointer">
+                      <Thead noWrap className="theme-bg-bg2 theme-info text-right cursor-pointer border-0">
                         {_('Created')}
                         <i className="inline-block px-ml-10 fas fa-sort" />
                       </Thead>
-                      <Thead className="theme-bg-bg2" stickyRight>
+                      <Thead className="theme-bg-bg2 px-r--1 border-0" stickyRight>
                         &nbsp;
                       </Thead>
                       <Trow>
-                        <Tcol className="theme-bg-bg0 text-right">
+                        <Tcol className="theme-bg-bg0 text-right border-0">
                           10431
                         </Tcol>
-                        <Tcol noWrap className="theme-bg-bg0 text-left">
+                        <Tcol noWrap className="theme-bg-bg0 text-left border-0">
                           John Doe
                         </Tcol>
-                        <Tcol className="theme-bg-bg0 theme-info text-center cursor-pointer">
+                        <Tcol className="theme-bg-bg0 theme-info text-center cursor-pointer border-0">
                           user
                         </Tcol>
-                        <Tcol className="theme-bg-bg0 theme-info text-left">
-                          <Tags value={[ 'location', 'commerce', 'address' ]} />
+                        <Tcol className="theme-bg-bg0 theme-info text-left border-0">
+                          <Tags className="rounded-full theme-bg-warning" value={[ 'location', 'commerce', 'address' ]} />
                         </Tcol>
-                        <Tcol noWrap className="theme-bg-bg0 theme-info text-left cursor-pointer">
+                        <Tcol noWrap className="theme-bg-bg0 theme-info text-left cursor-pointer border-0">
                           United States
                         </Tcol>
-                        <Tcol className="theme-bg-bg0 theme-info text-center cursor-pointer">
+                        <Tcol className="theme-bg-bg0 theme-info text-center cursor- border-0">
                           Yes
                         </Tcol>
-                        <Tcol noWrap className="theme-bg-bg0 text-right">
+                        <Tcol noWrap className="theme-bg-bg0 text-right border-0">
                           2 days ago
                         </Tcol>
-                        <Tcol className="theme-bg-bg0" stickyRight>
+                        <Tcol className="theme-bg-bg0 border-0 px-r--1" stickyRight>
                           <Button info>
                             <i className="fas fa-fw fa-caret-right"></i>
                           </Button>
                         </Tcol>
                       </Trow>
                       <Trow>
-                        <Tcol className="theme-bg-bg1 text-right">
+                        <Tcol className="theme-bg-bg1 text-right border-0">
                           10432
                         </Tcol>
-                        <Tcol noWrap className="theme-bg-bg1 text-left">
+                        <Tcol noWrap className="theme-bg-bg1 text-left border-0">
                           Jane Doe
                         </Tcol>
-                        <Tcol className="theme-bg-bg1 theme-info text-center cursor-pointer">
+                        <Tcol className="theme-bg-bg1 theme-info text-center cursor-pointer border-0">
                           admin
                         </Tcol>
-                        <Tcol className="theme-bg-bg1 theme-info text-left">
-                          <Tags value={[ 'location', 'commerce', 'address' ]} />
+                        <Tcol className="theme-bg-bg1 theme-info text-left border-0">
+                          <Tags className="rounded-full theme-bg-warning" value={[ 'location', 'commerce', 'address' ]} />
                         </Tcol>
-                        <Tcol className="theme-bg-bg1 theme-info text-left cursor-pointer">
+                        <Tcol className="theme-bg-bg1 theme-info text-left cursor-pointer border-0">
                           Canada
                         </Tcol>
-                        <Tcol className="theme-bg-bg1 theme-info text-center cursor-pointer">
+                        <Tcol className="theme-bg-bg1 theme-info text-center cursor-pointer border-0">
                           Yes
                         </Tcol>
-                        <Tcol noWrap className="theme-bg-bg1 text-right">
+                        <Tcol noWrap className="theme-bg-bg1 text-right border-0">
                           last week
                         </Tcol>
-                        <Tcol className="theme-bg-bg1" stickyRight>
+                        <Tcol className="theme-bg-bg1 border-0 px-r--1" stickyRight>
                           <Button info>
                             <i className="fas fa-fw fa-caret-right"></i>
                           </Button>
