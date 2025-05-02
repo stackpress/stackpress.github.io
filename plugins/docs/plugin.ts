@@ -37,8 +37,16 @@ export default function plugin(server: Server) {
     server.get('/docs/**', (_req, res, ctx) => setServerProps(ctx, res));
     server.get('/docs', '@/plugins/docs/views/index', -100);
     server.get('/docs/introduction', '@/plugins/docs/views/index', -100);
-    server.get('/docs/tutorial', '@/plugins/docs/views/tutorial/index', -100);
-    server.get('/docs/toolkit/setup', '@/plugins/docs/views/toolkit/setup/index', -100);
+    //index routes
+    [
+      'tutorial',
+      'toolkit/setup',
+      'references/client-api',
+      'references/router-class',
+    ].map(route => {
+      server.get(`/docs/${route}`, `@/plugins/docs/views/${route}/index`, -100);  
+    });
+    //other routes
     [
       'getting-started',
       'deploy/build-project',
@@ -53,7 +61,10 @@ export default function plugin(server: Server) {
       'develop/query-database',
       'plugins/create-plugins',
       'plugins/toggle-plugins',
-      'references/client-api',
+      'references/client-api/actions',
+      'references/client-api/config/column',
+      'references/client-api/config/fieldset',
+      'references/client-api/config/model',
       'references/configuration',
       'references/emitter-class',
       'references/exception-class',
@@ -64,21 +75,21 @@ export default function plugin(server: Server) {
       'references/query-builder/insert-builder',
       'references/query-builder/select-builder',
       'references/query-builder/update-builder',
+      'references/react-api',
       'references/request-class',
       'references/response-class',
-      'references/router-class',
-      'references/router/action-class',
-      'references/router/entry-class',
-      'references/router/import-class',
-      'references/router/view-class',
+      'references/router-class/action',
+      'references/router-class/entry',
+      'references/router-class/import',
+      'references/router-class/view',
       'references/schema-specifications',
       'references/server-class',
       'references/view-engine',
-      'toolkit/add-translations',
-      'toolkit/customize-terminal',
       'references/data/callable-map',
       'references/data/callable-nest',
       'references/data/callable-session',
+      'toolkit/add-translations',
+      'toolkit/customize-terminal',
       'toolkit/setup-api',
       'toolkit/setup-authentication',
       'toolkit/setup-email',

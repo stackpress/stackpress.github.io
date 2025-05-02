@@ -8,25 +8,17 @@ import { useLanguage } from 'stackpress/view/client';
 import { H1, H2, H4, P, C, A, SS } from '../../../components/index.js';
 import { Nav, Code, Layout } from '../../../components/index.js';
 
-const examples = [
-//0-------------------------------------------------------------------//
-`router.action.on('say-hello', function SayHello(name: string) {
-  console.log('Hello ' + name);
-}, 1)`,
-//1-------------------------------------------------------------------//
-];
-
 export function Head(props: ServerPageProps<ServerConfigProps>) {
   //props
   const { request, styles = [] } = props;
   //hooks
   const { _ } = useLanguage();
   //variables
-  const title = _('Action Router Class - References - Stackpress Documentation');
+  const title = _('Entry Router - Router Class - References - Stackpress Documentation');
   const description = _(
-    'The ActionRouter class is an extension to the main router, that '
-    + 'handles actions that are functions accepting a Request, Response, '
-    + 'and Server object argument respectively.'
+    'The EntryRouter class is an extension of the main router, that '
+    + 'handles actions as filepaths that export default an action '
+    + 'function.'
   );
   return (
     <>
@@ -57,11 +49,8 @@ export function Right() {
         {_('Properties')}
       </h6>
       <nav className="px-fs-14 px-lh-32">
-        <a className="theme-tx0 block" href="#listeners">
-          {_('listeners')}
-        </a>
-        <a className="theme-tx0 block" href="#routes">
-          {_('routes')}
+        <a className="theme-tx0 block" href="#entries">
+          {_('entries')}
         </a>
       </nav>
 
@@ -69,6 +58,9 @@ export function Right() {
         {_('Methods')}
       </h6>
       <nav className="px-fs-14 px-lh-32">
+        <a className="theme-tx0 block" href="#action">
+          {_('action()')}
+        </a>
         <a className="theme-tx0 block" href="#all">
           {_('all()')}
         </a>
@@ -80,9 +72,6 @@ export function Right() {
         </a>
         <a className="theme-tx0 block" href="#emit">
           {_('emit()')}
-        </a>
-        <a className="theme-tx0 block" href="#event-name">
-          {_('eventName()')}
         </a>
         <a className="theme-tx0 block" href="#get">
           {_('get()')}
@@ -122,74 +111,80 @@ export function Right() {
 export function Body() {
   return (
     <article className="px-h-100-0 overflow-auto px-px-20 px-pb-20 px-fs-15">
-      <H1>Action Router Class</H1>
+      <H1>Entry Router</H1>
 
       <P>
-        The <SS>ActionRouter</SS> class is an extension of 
+        The <SS>EntryRouter</SS> class is an extension of 
         the <A href="/docs/references/router-class">main router</A>, 
-        that handles actions that are functions accepting
+        that handles actions that are filepaths that <C>export default</C> an 
+        action function. The action function itself accepts 
         a <A href="/docs/references/request-class">Request</A> object, 
         a <A href="/docs/references/request-class">Response</A> object, 
         and a <A href="/docs/references/request-class">Server</A> object 
         argument respectively.
       </P>
 
-      <Code>{`router.action.post('/', (req, res, ctx) => {})`}</Code>
+      <Code>{`router.entry.post('/', '/path/to/entry')`}</Code>
 
       {/*------------------------------------------------------------*/}
                   
-      <a id="listeners"></a>
-      <H2>listeners</H2>
+      <a id="entries"></a>
+      <H2>entries</H2>
 
       <section>
         <P>
-          Returns a read-only shallow copy of the listeners. Listeners 
-          are organized by events and events can have multiple listeners
-          and listeners have priorities. The listeners are not 
-          pre-organized by priority. This happens during the event loop.
+          Returns a map of route entries that are logged 
+          using <C>router.entry.route()</C>. You can use this to compare 
+          against the <C>listeners</C> and <C>expressions</C> properties 
+          for analytics and building production code. Entries are mapped 
+          like the following where entry is a filepath instead of an 
+          action function. 
         </P>
 
-        <Code>{'const listeners = router.action.listeners'}</Code>
-      </section>
-
-      {/*------------------------------------------------------------*/}
-                  
-      <a id="routes"></a>
-      <H2>routes</H2>
-
-      <section>
-        <P>
-          Returns all the routes that are registered with the router.
-          You can use this to compare against 
-          the <C>listeners</C> and <C>expressions</C> properties for 
-          analytics and building production code. Routes are mapped 
-          like the following.
-        </P>
-
-        <Code>{`event -> [ ...{ method, path } ]`}</Code>
+        <Code>{`event -> [ ...{ entry, priority } ]`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`const routes = router.action.routes`}</Code>
+        <Code>{`const entries = router.entry.entries`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
-                        
+                  
+      <a id="action"></a>
+      <H2>action()</H2>
+
+      <section>
+        <P>
+          Makes an action from an entry pathname string. Registers the 
+          entry, a provision for analytics and builders.
+        </P>
+
+        <H4>Usage</H4>
+
+        <Code>{`router.entry.action(event: string, action: string, priority = 0): Function`}</Code>
+
+        <H4>Example</H4>
+
+        <Code>{`router.entry.action('say-hello', '/path/to/page')`}</Code>
+      </section>
+
+      {/*------------------------------------------------------------*/}
+                  
       <a id="all"></a>
       <H2>all()</H2>
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('ALL', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('ALL', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.all(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.all(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.all('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.all('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -199,16 +194,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('CONNECT', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('CONNECT', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.connect(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.connect(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.connect('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.connect('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -218,79 +213,35 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('DELETE', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('DELETE', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.delete(path: string, action: string|Function, priority = 0)`}</Code>
+        <Code>{`router.entry.delete(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.delete('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.delete('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
                   
-      <a id="emit"></a>
-      <H2>emit()</H2>
-
-      <section>
-        <P>
-          Calls all the callbacks of the given event passing the given 
-          arguments.
-        </P>
-
-        <H4>Usage</H4>
-
-        <Code>{'emit(event: string, ...args: unknown[]): Status'}</Code>
-
-        <H4>Example</H4>
-
-        <Code>{`router.action.emit('say-hello', name)`}</Code>
-      </section>
-
-      {/*------------------------------------------------------------*/}
-                  
-      <a id="event-name"></a>
-      <H2>eventName()</H2>
-
-      <section>
-        <P>
-          Determines the event name given a method and path. This also 
-          sets the route in the routes map. This also sets the expression 
-          in the expressions map.
-        </P>
-
-        <H4>Usage</H4>
-
-        <Code>{`router.action.eventName(event: string|RegExp): string`}</Code>
-        <Code>{`router.action.eventName(method: Method, path: string): string`}</Code>
-
-        <H4>Example</H4>
-
-        <Code>{`const event = router.action.eventName('say-hello')`}</Code>
-        <Code>{`const event = router.action.eventName(/say\\-hello/)`}</Code>
-        <Code>{`const event = router.action.eventName('GET', '/say/hello')`}</Code>
-      </section>
-
-      {/*------------------------------------------------------------*/}
-                        
       <a id="get"></a>
       <H2>get()</H2>
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('GET', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('GET', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.get(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.get(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
-
-        <Code>{`router.action.get('/', (req, res, ctx) => {...})`}</Code>
+        
+        <Code>{`router.entry.get('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -300,16 +251,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('HEAD', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('HEAD', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.head(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.head(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.head('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.head('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -328,7 +279,7 @@ export function Body() {
 
         <H4>Example</H4>
 
-        <Code>{examples[0]}</Code>
+        <Code>{`router.entry.on('say-hello', '/path/to/page', 1)`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -338,16 +289,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('OPTIONS', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('OPTIONS', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.options(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.options(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.options('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.options('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -357,16 +308,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('PATCH', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('PATCH', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.patch(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.patch(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.patch('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.patch('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -376,16 +327,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('POST', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('POST', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.post(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.post(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.post('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.post('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -395,20 +346,20 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('PUT', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('PUT', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.put(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.put(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.put('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.put('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
-                        
+                  
       <a id="route"></a>
       <H2>route()</H2>
 
@@ -419,11 +370,11 @@ export function Body() {
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.route(method: Method, path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.route(method: Method, path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.route('GET', '/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.route('GET', '/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -433,16 +384,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.action.route('TRACE', ...)`}</C>.
+          A shortcut for <C>{`router.entry.route('TRACE', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.action.trace(path: string, action: Function, priority = 0)`}</Code>
+        <Code>{`router.entry.trace(path: string, action: string, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.action.trace('/', (req, res, ctx) => {...})`}</Code>
+        <Code>{`router.entry.trace('/', '/path/to/page')`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -457,21 +408,21 @@ export function Body() {
 
         <H4>Usage</H4>
 
-        <Code>{'use(router: Router): Router'}</Code>
+        <Code>{'use(router: EntryRouter): EntryRouter'}</Code>
 
         <H4>Example</H4>
 
-        <Code>{'router.action.use(router2)'}</Code>
+        <Code>{'router.entry.use(router2)'}</Code>
       </section>
 
       <Nav
         prev={{ 
-          text: 'Response Class', 
-          href: '/docs/references/response-class' 
+          text: 'Action Router', 
+          href: '/docs/references/router-class/action' 
         }}
         next={{ 
-          text: 'Schema Specifications', 
-          href: '/docs/references/schema-specifications' 
+          text: 'Import Router', 
+          href: '/docs/references/router-class/import' 
         }}
       />
     </article>

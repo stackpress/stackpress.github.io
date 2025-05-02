@@ -14,11 +14,11 @@ export function Head(props: ServerPageProps<ServerConfigProps>) {
   //hooks
   const { _ } = useLanguage();
   //variables
-  const title = _('Entry Router Class - References - Stackpress Documentation');
+  const title = _('Import Router - Router Class - References - Stackpress Documentation');
   const description = _(
-    'The EntryRouter class is an extension of the main router, that '
-    + 'handles actions as filepaths that export default an action '
-    + 'function.'
+    'The ImportRouter class is an extension of the main router, that '
+    + 'handles actions that are no-argument functions that return an '
+    + 'import() statement.'
   );
   return (
     <>
@@ -49,8 +49,8 @@ export function Right() {
         {_('Properties')}
       </h6>
       <nav className="px-fs-14 px-lh-32">
-        <a className="theme-tx0 block" href="#entries">
-          {_('entries')}
+        <a className="theme-tx0 block" href="#imports">
+          {_('imports')}
         </a>
       </nav>
 
@@ -111,41 +111,37 @@ export function Right() {
 export function Body() {
   return (
     <article className="px-h-100-0 overflow-auto px-px-20 px-pb-20 px-fs-15">
-      <H1>Entry Router Class</H1>
+      <H1>Import Router</H1>
 
       <P>
-        The <SS>EntryRouter</SS> class is an extension of 
+        The <SS>ImportRouter</SS> class is an extension of 
         the <A href="/docs/references/router-class">main router</A>, 
-        that handles actions that are filepaths that <C>export default</C> an 
-        action function. The action function itself accepts 
-        a <A href="/docs/references/request-class">Request</A> object, 
-        a <A href="/docs/references/request-class">Response</A> object, 
-        and a <A href="/docs/references/request-class">Server</A> object 
-        argument respectively.
+        that handles actions that are no-argument functions that 
+        return an <C>import()</C> statement.
       </P>
 
-      <Code>{`router.entry.post('/', '/path/to/entry')`}</Code>
+      <C>{`router.import.post('/', () => import('/path/to/entry.js'))`}</C>
 
       {/*------------------------------------------------------------*/}
                   
-      <a id="entries"></a>
-      <H2>entries</H2>
+      <a id="imports"></a>
+      <H2>imports</H2>
 
       <section>
         <P>
-          Returns a map of route entries that are logged 
-          using <C>router.entry.route()</C>. You can use this to compare 
+          Returns a map of route imports that are logged 
+          using <C>router.import.route()</C>. You can use this to compare
           against the <C>listeners</C> and <C>expressions</C> properties 
-          for analytics and building production code. Entries are mapped 
-          like the following where entry is a filepath instead of an 
-          action function. 
+          for analytics and building production code. Imports are mapped 
+          like the following where import is a no-argument callback that 
+          returns an import ie. <C>{`() => import('./page.js')`}</C>.
         </P>
 
-        <Code>{`event -> [ ...{ entry, priority } ]`}</Code>
+        <Code>{`event -> [ ...{ import, priority } ]`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`const entries = router.entry.entries`}</Code>
+        <Code>{`const imports = router.import.imports`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -161,11 +157,11 @@ export function Body() {
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.action(event: string, action: string, priority = 0): Function`}</Code>
+        <Code>{`router.import.action(event: string, action: Function, priority = 0): Function`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.action('say-hello', '/path/to/page')`}</Code>
+        <Code>{`router.import.action('say-hello', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -175,16 +171,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('ALL', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('ALL', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.all(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.all(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.all('/', '/path/to/page')`}</Code>
+        <Code>{`router.all('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -194,16 +190,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('CONNECT', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('CONNECT', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.connect(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.connect(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.connect('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.connect('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -213,16 +209,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('DELETE', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('DELETE', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.delete(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.delete(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.delete('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.delete('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -232,16 +228,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('GET', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('GET', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.get(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.get(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
         
-        <Code>{`router.entry.get('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.get('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -251,16 +247,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('HEAD', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('HEAD', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.head(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.head(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.head('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.head('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -279,7 +275,7 @@ export function Body() {
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.on('say-hello', '/path/to/page', 1)`}</Code>
+        <Code>{`router.import.on('say-hello', () => import('./page.js'), 1)`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -289,16 +285,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('OPTIONS', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('OPTIONS', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.options(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.options(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.options('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.options('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -308,16 +304,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('PATCH', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('PATCH', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.patch(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.patch(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.patch('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.patch('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -327,16 +323,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('POST', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('POST', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.post(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.post(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.post('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.post('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -346,16 +342,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('PUT', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('PUT', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.put(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.put(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.put('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.put('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -370,11 +366,11 @@ export function Body() {
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.route(method: Method, path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.route(method: Method, path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.route('GET', '/', '/path/to/page')`}</Code>
+        <Code>{`router.import.route('GET', '/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -384,16 +380,16 @@ export function Body() {
 
       <section>
         <P>
-          A shortcut for <C>{`router.entry.route('TRACE', ...)`}</C>.
+          A shortcut for <C>{`router.import.route('TRACE', ...)`}</C>.
         </P>
 
         <H4>Usage</H4>
 
-        <Code>{`router.entry.trace(path: string, action: string, priority = 0)`}</Code>
+        <Code>{`router.import.trace(path: string, action: Function, priority = 0)`}</Code>
 
         <H4>Example</H4>
 
-        <Code>{`router.entry.trace('/', '/path/to/page')`}</Code>
+        <Code>{`router.import.trace('/', () => import('./page.js'))`}</Code>
       </section>
 
       {/*------------------------------------------------------------*/}
@@ -408,21 +404,21 @@ export function Body() {
 
         <H4>Usage</H4>
 
-        <Code>{'use(router: EntryRouter): EntryRouter'}</Code>
+        <Code>{'use(router: ViewRouter): ViewRouter'}</Code>
 
         <H4>Example</H4>
 
-        <Code>{'router.entry.use(router2)'}</Code>
+        <Code>{'router.import.use(router2)'}</Code>
       </section>
 
       <Nav
         prev={{ 
-          text: 'Response Class', 
-          href: '/docs/references/response-class' 
+          text: 'Entry Router', 
+          href: '/docs/references/router-class/entry' 
         }}
         next={{ 
-          text: 'Schema Specifications', 
-          href: '/docs/references/schema-specifications' 
+          text: 'View Router', 
+          href: '/docs/references/router-class/view' 
         }}
       />
     </article>

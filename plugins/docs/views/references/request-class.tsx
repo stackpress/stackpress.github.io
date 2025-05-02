@@ -412,8 +412,8 @@ export function Body() {
 
       <Nav
         prev={{ 
-          text: 'Query Builder', 
-          href: '/docs/references/query-builder' 
+          text: 'React API', 
+          href: '/docs/references/react-api' 
         }}
         next={{ 
           text: 'Response Class', 

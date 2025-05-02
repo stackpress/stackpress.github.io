@@ -66,7 +66,7 @@ export function Highlight({ children }: { children: ReactNode }) {
   );
 }
 
-export function InlineCode({ lang = 'javascript', children }: { 
+export function InlineCode({ lang = 'typescript', children }: { 
   lang?: string, 
   children: string 
 }) {
@@ -104,7 +104,7 @@ export function Bash({ children }: { children: string }) {
 }
 
 export function Code(props: { lang?: string, children: string }) {
-  const { lang = 'javascript', children } = props;
+  const { lang = 'typescript', children } = props;
   return (
     <CodeView 
       copy 

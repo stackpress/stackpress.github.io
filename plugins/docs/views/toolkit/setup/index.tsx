@@ -137,7 +137,7 @@ export function Body() {
             </p>
             <Button info 
               className="inline-block px-fs-12" 
-              href="/docs/tutorial/4-context-provider"
+              href="/docs/toolkit/setup/4-context-provider"
             >
               Read On
             </Button>

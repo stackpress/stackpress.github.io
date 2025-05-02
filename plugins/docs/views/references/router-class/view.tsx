@@ -14,7 +14,7 @@ export function Head(props: ServerPageProps<ServerConfigProps>) {
   //hooks
   const { _ } = useLanguage();
   //variables
-  const title = _('View Router Class - References - Stackpress Documentation');
+  const title = _('View Router - Router Class - References - Stackpress Documentation');
   const description = _(
     'The ViewRouter class is an extension of the main router, that '
     + 'handles actions that are filepath that export default a React '
@@ -111,7 +111,7 @@ export function Right() {
 export function Body() {
   return (
     <article className="px-h-100-0 overflow-auto px-px-20 px-pb-20 px-fs-15">
-      <H1>View Router Class</H1>
+      <H1>View Router</H1>
 
       <P>
         The <SS>ViewRouter</SS> class is an extension of 
@@ -411,12 +411,12 @@ export function Body() {
 
       <Nav
         prev={{ 
-          text: 'Response Class', 
-          href: '/docs/references/response-class' 
+          text: 'Import Router', 
+          href: '/docs/references/router-class/import' 
         }}
         next={{ 
-          text: 'Schema Specifications', 
-          href: '/docs/references/schema-specifications' 
+          text: 'Router Class', 
+          href: '/docs/references/router-class' 
         }}
       />
     </article>

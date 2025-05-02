@@ -283,6 +283,11 @@ export function LayoutLeft(props: {
           href: '/docs/references/query-builder'
         },
         {
+          label: 'React API',
+          search: '/docs/references/react-api',
+          href: '/docs/references/react-api'
+        },
+        {
           label: 'Request Class',
           search: '/docs/references/request-class',
           href: '/docs/references/request-class'

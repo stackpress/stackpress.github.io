@@ -5,8 +5,8 @@ import type {
 } from 'stackpress/view/client';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import { H1, H2, H4, P, C, A, SS } from '../../components/index.js';
-import { Nav, Code, Layout } from '../../components/index.js';
+import { H1, H2, H4, P, C, A, SS } from '../../../components/index.js';
+import { Nav, Note, Code, Layout } from '../../../components/index.js';
 
 const examples = [
 //0-------------------------------------------------------------------//
@@ -171,20 +171,25 @@ export function Body() {
         four ways.
       </P>
 
-      <ul className="px-lh-30 px-px-20">
+      <ul className="px-lh-30 px-px-20 px-pb-20">
         <li>
-          • <A href="/docs/references/router/action-class">Action routing</A>
+          • <A href="/docs/references/router-class/action">Action routing</A>
         </li>
         <li>
-          • <A href="/docs/references/router/entry-class">Entry routing</A>
+          • <A href="/docs/references/router-class/entry">Entry routing</A>
         </li>
         <li>
-          • <A href="/docs/references/router/import-class">Import routing</A>
+          • <A href="/docs/references/router-class/import">Import routing</A>
         </li>
         <li>
-          • <A href="/docs/references/router/view-class">View routing</A>
+          • <A href="/docs/references/router-class/view">View routing</A>
         </li>
       </ul>
+
+      <Note>
+        The router class handles action, import and view routing so you 
+        don't have to worry about which one to use.
+      </Note>
 
       {/*------------------------------------------------------------*/}
                   

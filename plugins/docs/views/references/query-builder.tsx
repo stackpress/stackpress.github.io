@@ -583,8 +583,8 @@ export function Body() {
           href: '/docs/references/exception-class' 
         }}
         next={{ 
-          text: 'Request Class', 
-          href: '/docs/references/request-class' 
+          text: 'React API', 
+          href: '/docs/references/react-api' 
         }}
       />
     </article>
