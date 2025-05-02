@@ -1,6 +1,6 @@
 //modules
 import type { ReactNode } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from 'r22n';
 //stackpress
 import type { 
@@ -425,26 +425,24 @@ export function LayoutApp(props: {
 }
 
 export default function Layout(props: LayoutProviderProps & PanelAppProps) {
-  let { 
+  const { 
     data,
     session,
-    request,
     response,
     right,
     children 
   } = props;
-  //unload flash message
+  const [ request, setRequest ] = useState<Record<string, any>>(
+    props.request || {}
+  );
   //unload flash message
   useEffect(() => {
-    if (!request) {
-      request = {} as any;
-    }
-    if (request && !request.session) {
-      request.session = {} as any;
-    }
-    if (request?.session && !request.session.theme) {
-      const dark = document.cookie.includes('theme=dark');
-      request.session.theme = dark ? 'dark': 'light';
+    const dark = document.cookie.includes('theme=dark');
+    if (!request.session?.theme) {
+      setRequest({
+        ...request,
+        session: { theme: dark ? 'dark': 'light' }
+      });
     }
     unload();
   }, []);
@@ -455,7 +453,7 @@ export default function Layout(props: LayoutProviderProps & PanelAppProps) {
     <LayoutProvider 
       data={data}
       session={session}
-      request={request}
+      request={request as any}
       response={response}
     >
       <LayoutApp right={right}>

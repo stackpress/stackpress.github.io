@@ -1,5 +1,5 @@
 //modules
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 //views
 import type { 
   PanelAppProps, 
@@ -76,24 +76,23 @@ export function App(props: PanelAppProps) {
 }
 
 export default function Layout(props: LayoutPanelProps) {
-  let { 
+  const { 
     data,
     session,
-    request,
     response,
     children 
   } = props;
+  const [ request, setRequest ] = useState<Record<string, any>>(
+    props.request || {}
+  );
   //unload flash message
   useEffect(() => {
-    if (!request) {
-      request = {} as any;
-    }
-    if (request && !request.session) {
-      request.session = {} as any;
-    }
-    if (request?.session && !request.session.theme) {
-      const dark = document.cookie.includes('theme=dark');
-      request.session.theme = dark ? 'dark': 'light';
+    const dark = document.cookie.includes('theme=dark');
+    if (!request.session?.theme) {
+      setRequest({
+        ...request,
+        session: { theme: dark ? 'dark': 'light' }
+      });
     }
     unload();
   }, []);
@@ -104,7 +103,7 @@ export default function Layout(props: LayoutPanelProps) {
     <LayoutProvider 
       data={data}
       session={session}
-      request={request}
+      request={request as any}
       response={response}
     >
       <App>{children}</App>
