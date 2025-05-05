@@ -9,9 +9,7 @@
     "stackpress"
   ],
   "scripts": {
-    "build": "yarn build:client && yarn build:docs",
-    "build:client": "tsx build.ts",
-    "build:docs": "tsx scripts/build.ts",
+    "build": "tsx build.ts",
     "dev": "stackpress serve -b config/develop -v",
     "emit": "stackpress emit -b config/develop -v",
     "preview": "stackpress serve -b config/preview -v"
