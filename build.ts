@@ -2,7 +2,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 //stackpress
-import { terminalControls } from 'stackpress/terminal';
+import { Terminal } from 'stackpress/terminal';
 import * as scripts from 'stackpress/scripts';
 //plugins
 import { docs } from './config/common.js';
@@ -10,17 +10,15 @@ import bootstrap from './config/build.js';
 
 async function build() {
   const server = await bootstrap();
-  const cwd = server.config.path('server.cwd', process.cwd());
-  const label = server.config.path('terminal.label', '[SP]');
-  const control = terminalControls(label);
+  const cli = new Terminal([ 'build' ], server);
   
-  control.system('Copying public to docs...');
-  await fsCopyFolder(path.join(cwd, 'public'), docs);
+  cli.control.system('Copying public to docs...');
+  await fsCopyFolder(path.join(cli.cwd, 'public'), docs);
 
-  control.system('Building pages, client and styles...');
+  cli.control.system('Building pages, client and styles...');
   await scripts.build(server);
 
-  control.system('Generating markup in docs...');
+  cli.control.system('Generating markup in docs...');
   const ignore = Array.from(server.action.expressions.keys());
   const routes = Array.from(server.routes.entries()).filter(
     ([ event ]) => !ignore.includes(event)
@@ -30,7 +28,7 @@ async function build() {
       url: new URL(`https://www.stackpress.io${route.path}`),
     });
     const response = await server.resolve(event, request);
-    control.system(`Generating ${request.url.href} ...`);
+    cli.control.system(`Generating ${request.url.href} ...`);
     if (response.results) {
       const routepath = route.path.replace(/^\//, '');
       const filepath = routepath === '' ? 'index.html' : `${routepath}.html`;
