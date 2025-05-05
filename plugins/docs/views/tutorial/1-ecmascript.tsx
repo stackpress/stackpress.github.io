@@ -19,7 +19,7 @@ const content = {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.12"
+    "stackpress": "0.2.14"
   },
   "devDependencies": {
     "@types/node": "22.14.1",

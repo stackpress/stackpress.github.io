@@ -20,7 +20,7 @@ const examples = [
     //...
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.15",
+    "@stackpress/idea-transformer": "0.5.17",
     "fast-glob": "3.3.3",
     "prettier": "3.5.3",
     "ts-morph": "25.0.1",
@@ -180,7 +180,7 @@ export default function plugin(server: Server) {
     "stackpress": "0.2.10"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.15",
+    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",

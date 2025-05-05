@@ -24,7 +24,7 @@ const examples = [
   //...
   "dependencies": {
     "@electric-sql/pglite": "0.2.17",
-    "@stackpress/inquire-pglite": "0.5.15",
+    "@stackpress/inquire-pglite": "0.5.17",
     //...
   },
   //...
@@ -273,14 +273,14 @@ export default action(async function Populate(_req, _res, ctx) {
   },
   "dependencies": {
     "@electric-sql/pglite": "0.2.17",
-    "@stackpress/inquire-pglite": "0.5.15",
+    "@stackpress/inquire-pglite": "0.5.17",
     "frui": "0.1.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "stackpress": "0.2.10"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.15",
+    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",

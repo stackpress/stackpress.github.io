@@ -14,7 +14,7 @@ const setup = [
 `{
   //...
   "dependencies": {
-    "@stackpress/inquire-pg": "^0.5.16",
+    "@stackpress/inquire-pg": "^0.5.17",
     "pg": "8.13.1",
     //...
   }
@@ -24,7 +24,7 @@ const setup = [
 `{
   //...
   "dependencies": {
-    "@stackpress/inquire-pglite": "^0.5.16",
+    "@stackpress/inquire-pglite": "^0.5.17",
     "@electric-sql/pglite": "0.2.14",
     //...
   }
@@ -34,7 +34,7 @@ const setup = [
 `{
   //...
   "dependencies": {
-    "@stackpress/inquire-mysql": "^0.5.16",
+    "@stackpress/inquire-mysql": "^0.5.17",
     "mysql2": "3.11.5",
     //...
   }
@@ -44,7 +44,7 @@ const setup = [
 `{
   //...
   "dependencies": {
-    "@stackpress/inquire-sqlite3": "^0.5.16",
+    "@stackpress/inquire-sqlite3": "^0.5.17",
     "better-sqlite3": "11.7.0",
     //...
   },
