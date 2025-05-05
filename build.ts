@@ -26,7 +26,11 @@ async function build() {
     ([ event ]) => !ignore.includes(event)
   );
   for (const [ event, route ] of routes) {
-    const response = await server.resolve(event);
+    const request = server.request({
+      url: new URL(`https://www.stackpress.io${route.path}`),
+    });
+    const response = await server.resolve(event, request);
+    control.system(`Generating ${request.url.href} ...`);
     if (response.results) {
       const routepath = route.path.replace(/^\//, '');
       const filepath = routepath === '' ? 'index.html' : `${routepath}.html`;
@@ -88,10 +92,3 @@ build().then(() => {
   console.error('Build failed:', error);
   process.exit(1);
 });
-
-build()
-  .then(() => process.exit(0))
-  .catch(e => {
-    console.error(e);
-    process.exit(1);
-  });
