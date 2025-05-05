@@ -40,9 +40,14 @@ export default function HomePage(props: ServerPageProps) {
 `import { server } from 'stackpress/http'
 
 const app = server()
+
 app.get('/', (req, res) => {
   const name = req.data('name')
   res.render('@/views/home', { name })
+})
+
+app.create().listen(3000, () => {
+  console.log('Listening on port 3000')
 })`,
 
 `export function Head(props: ServerPageProps) {

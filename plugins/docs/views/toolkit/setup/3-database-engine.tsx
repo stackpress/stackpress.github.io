@@ -102,8 +102,11 @@ const content = {
 'config/develop.ts': `
 import type { Config } from 'stackpress/types';
 import unocss from 'unocss/vite';
-
-export const config: Config = {
+//development configuration
+const config: Config = {
+  server: { 
+    mode: 'development' 
+  },
   view: {
     engine: {
       //filepath to a global css files
@@ -134,6 +137,8 @@ export const config: Config = {
     }
   }
 };
+//export configuration
+export default config;
 `.trim(),
 //--------------------------------------------------------------------//
 'plugins/app/pages/home.ts': `
@@ -264,7 +269,7 @@ export default action(async function Populate(_req, _res, ctx) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress config/develop serve -v"
+    "dev": "stackpress serve -b config/develop -v"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.2.17",

@@ -6,7 +6,7 @@ import type {
 import { useLanguage } from 'stackpress/view/client';
 //docs
 import type { File, Folder } from '../../components/index.js';
-import { H1, H2, P, H, B, C, SS, Nav } from '../../components/index.js';
+import { H1, H2, P, H, B, C, E, SS, Nav } from '../../components/index.js';
 import { Note, Code, Editor, Layout } from '../../components/index.js';
 import { Checkpoint as LastCheckpoint } from './1-ecmascript.js';
 
@@ -14,8 +14,12 @@ const examples = [
 //0-------------------------------------------------------------------//
 `//config/develop.ts
 import type { Config } from 'stackpress/types';
-//placeholder for eventual development configuration
-export const config: Config = {};`,
+//development configuration
+const config: Config = {
+  server: { mode: 'development' }
+};
+//export configuration
+export default config;`,
 //1-------------------------------------------------------------------//
 `//plugins/app/plugin.ts
 import type { Server } from 'stackpress/server';
@@ -64,8 +68,12 @@ const content = {
 //--------------------------------------------------------------------//
 'config/develop.ts': `
 import type { Config } from 'stackpress/types';
-//placeholder for eventual development configuration
-export const config: Config = {};
+//development configuration
+const config: Config = {
+  server: { mode: 'development' }
+};
+//export configuration
+export default config;
 `.trim(),
 //--------------------------------------------------------------------//
 'plugins/app/views/home.tsx': `
@@ -121,12 +129,12 @@ export default function plugin(server: Server) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress config/develop serve -v"
+    "dev": "stackpress serve -b config/develop -v"
   },
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.10"
+    "stackpress": "0.2.12"
   },
   "devDependencies": {
     "@types/node": "22.14.1",
@@ -354,8 +362,12 @@ export function Body() {
 
         <P>
           This file will host all the configuration for the development 
-          piece of your application. In later tutorials, there will be
-          a <SS>build</SS> and <SS>preview</SS> configuration as well.
+          piece of your application. In this case we just need to 
+          set <C>{`{ server: { mode: 'development' } }`}</C> because by 
+          default it's <C>'production'</C>. This tells future plugins 
+          what environment the project is currently in. Later sections 
+          will explain a <SS>build</SS> and <SS>preview</SS> configuration 
+          as well.
         </P>
       </section>
 
@@ -445,7 +457,7 @@ export function Body() {
               "stackpress"
             ],
             "scripts": {
-              "dev": "stackpress config/develop serve -v"
+              "dev": "stackpress serve -b config/develop -v"
             },
           }, null, 2)
         }</Code>
@@ -453,9 +465,11 @@ export function Body() {
         <P>
           When we run <B>npm run dev</B>, <SS>Stackpress</SS> will 
           execute a default bootstrap process that will register the 
-          given <C>plugins</C> in the given order. Adding
-          the <C>stackpress</C> plugin will provision all 
-          the optional toolsets to your application.
+          given <C>plugins</C> in the given order. 
+          The <C>-b</C> <E>(bootstrap)</E> flag tells the command to use 
+          the config found at <C>'config/develop'</C>. The <C>-v</C> flags 
+          will make the command verbose. Adding the <C>stackpress</C> plugin 
+          will provision all the optional toolsets to your application.
         </P>
       </section>
 

@@ -8,7 +8,7 @@ import { useLanguage } from 'stackpress/view/client';
 import { H1, B, P, C, SS } from '../../components/index.js';
 import { Nav, Code, Note, Layout } from '../../components/index.js';
 
-export const examples = [
+const examples = [
 //0-------------------------------------------------------------------//
 `import type { Server } from 'stackpress/server';
 import { terminalControls } from 'stackpress/terminal';
@@ -84,8 +84,8 @@ export function Body() {
       </Note>
 
       <P>
-        In Terminal, run 
-        <B>npx stackpress config/develop hello-age --name John</B> to 
+        In Terminal, 
+        run <B>npx stackpress hello-age -b config/develop --name John</B> to 
         see your command execute.
       </P>
       

@@ -5,10 +5,10 @@ import type {
 } from 'stackpress/view/client';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import { H1, H2, P, A, SS } from '../../components/index.js';
-import { Nav, Code, Layout } from '../../components/index.js';
+import { H1, H2, P, A, C, SS } from '../../components/index.js';
+import { Nav, Note, Code, Layout } from '../../components/index.js';
 
-export const examples = [
+const examples = [
 //0-------------------------------------------------------------------//
 `import path from 'node:path';
 
@@ -232,7 +232,7 @@ import { server as http } from 'stackpress/http';
 import type { Config } from './common.js';
 import * as common from './common.js';
 
-export const config: Config = {
+const config: Config = {
   server: {
     ...common.server,
     mode: 'development',
@@ -329,7 +329,8 @@ export const config: Config = {
   database: common.database,
   email: common.email,
   language: common.language
-};`,
+};
+export default config;`,
 //2-------------------------------------------------------------------//
 `import path from 'node:path';
 import unocss from 'unocss/vite';
@@ -338,7 +339,7 @@ import { server as http } from 'stackpress/http';
 import type { Config } from './common.js';
 import * as common from './common.js';
 
-export const config: Config = {
+const config: Config = {
   server: {
     ...common.server,
     mode: 'production',
@@ -378,7 +379,8 @@ export const config: Config = {
   cookie: common.cookie,
   language: common.language,
   session: common.session
-};`,
+};
+export default config;`,
 //3-------------------------------------------------------------------//
 `import path from 'node:path';
 import type { Server } from 'stackpress/server';
@@ -386,7 +388,7 @@ import { server as http } from 'stackpress/http';
 import type { Config } from './common.js';
 import * as common from './common.js';
 
-export const config: Config = {
+const config: Config = {
   assets: common.assets,
   server: {
     ...common.server,
@@ -461,7 +463,8 @@ export const config: Config = {
   database: common.database,
   email: common.email,
   language: common.language
-};`,
+};
+export default config;`,
 //4-------------------------------------------------------------------//
 ];
 
@@ -592,6 +595,18 @@ export function Body() {
 
       <Code>{examples[1]}</Code>
 
+      <Note>
+        Make sure to <C>export default</C> the config.
+      </Note>
+
+      <P>
+        To use this configuration file you can run the following
+        command in the terminal.
+      </P>
+
+      <Code lang="bash">{'npx stackpress serve -b config/develop'}</Code>
+
+
       {/*------------------------------------------------------------*/}
 
       <a id="build-configuration"></a>
@@ -604,6 +619,17 @@ export function Body() {
 
       <Code>{examples[2]}</Code>
 
+      <Note>
+        Make sure to <C>export default</C> the config.
+      </Note>
+
+      <P>
+        To use this configuration file you can run the following
+        command in the terminal.
+      </P>
+
+      <Code lang="bash">{'npx stackpress serve -b config/build'}</Code>
+
       {/*------------------------------------------------------------*/}
 
       <a id="preview-configuration"></a>
@@ -615,6 +641,17 @@ export function Body() {
       </P>
 
       <Code>{examples[3]}</Code>
+
+      <Note>
+        Make sure to <C>export default</C> the config.
+      </Note>
+
+      <P>
+        To use this configuration file you can run the following
+        command in the terminal.
+      </P>
+
+      <Code lang="bash">{'npx stackpress serve -b config/preview'}</Code>
 
       <Nav
         next={{ 

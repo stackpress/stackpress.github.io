@@ -62,8 +62,11 @@ const content = {
 'config/develop.ts': `
 import type { Config } from 'stackpress/types';
 import unocss from 'unocss/vite';
-
-export const config: Config = {
+//development configuration
+const config: Config = {
+  server: { 
+    mode: 'development' 
+  },
   view: {
     engine: {
       //filepath to a global css files
@@ -94,6 +97,8 @@ export const config: Config = {
     }
   }
 };
+//export configuration
+export default config;
 `.trim(),
 //--------------------------------------------------------------------//
 'plugins/app/pages/home.ts': `
@@ -166,7 +171,7 @@ export default function plugin(server: Server) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress config/develop serve -v"
+    "dev": "stackpress serve -b config/develop -v"
   },
   "dependencies": {
     "frui": "0.1.6",

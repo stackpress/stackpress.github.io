@@ -50,9 +50,9 @@ export function Header4({ children }: { children: string }) {
 
 export function Paragraph({ children }: { children: ReactNode }) {
   return (
-    <p className="px-lh-30 px-py-20 block">
+    <div className="px-lh-30 px-py-20 block">
       <Translate>{children}</Translate>
-    </p>
+    </div>
   );
 }
 

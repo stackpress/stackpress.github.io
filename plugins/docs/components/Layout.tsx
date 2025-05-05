@@ -102,7 +102,7 @@ export function LayoutLeft(props: {
         }
       ]
     },
-    /*{
+    {
       label: 'Develop',
       search: '/docs/develop',
       children: [
@@ -125,15 +125,10 @@ export function LayoutLeft(props: {
           label: 'Develop Events',
           search: '/docs/develop/develop-events',
           href: '/docs/develop/develop-events'
-        },
-        {
-          label: 'Query Database',
-          search: '/docs/develop/query-database',
-          href: '/docs/develop/query-database'
         }
       ]
     },
-    {
+    /*{
       label: 'Design',
       search: '/docs/design',
       children: [
@@ -158,7 +153,7 @@ export function LayoutLeft(props: {
           href: '/docs/design/ui-components'
         }
       ]
-    },
+    },*/
     {
       label: 'Transform',
       search: '/docs/transform',
@@ -172,14 +167,9 @@ export function LayoutLeft(props: {
           label: 'Generate an Idea',
           search: '/docs/transform/generate-idea',
           href: '/docs/transform/generate-idea'
-        },
-        {
-          label: 'Customize Admin',
-          search: '/docs/transform/customize-admin',
-          href: '/docs/transform/customize-admin'
         }
       ]
-    },*/
+    },
     {
       label: 'Toolkit',
       search: '/docs/toolkit',

@@ -6,7 +6,7 @@ import type {
 import { useState } from 'react';
 import { useLanguage } from 'stackpress/view/client';
 //docs
-import { H1, H2, H3, P, C, Nav } from '../components/index.js';
+import { H1, H2, H3, P, C, H, Nav } from '../components/index.js';
 import Code from '../components/Code.js';
 import Layout from '../components/Layout.js';
 
@@ -153,10 +153,10 @@ export function Body() {
             "frui": "0.1.6",
             "react": "19.1.0",
             "react-dom": "19.1.0",
-            "stackpress": "0.2.10"
+            "stackpress": "0.2.12"
           },
           "devDependencies": {
-            "@stackpress/idea-transformer": "0.5.15",
+            "@stackpress/idea-transformer": "0.5.16",
             "@types/node": "22.14.1",
             "@types/react": "19.1.2",
             "@types/react-dom": "19.1.2",
@@ -213,7 +213,7 @@ export function Body() {
 
       <ol className="px-px-10 px-lh-30 px-pb-20">
         <li>2.3.1. In Terminal, run <C>npx tsx index.ts</C></li>
-        <li>2.3.2. On your browser, visit <C>http://localhost:3000?name=John</C></li>
+        <li>2.3.2. On your browser, visit <H>http://localhost:3000?name=John</H></li>
       </ol>
 
       <P>

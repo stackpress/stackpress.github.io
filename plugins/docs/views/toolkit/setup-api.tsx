@@ -9,7 +9,7 @@ import { Table, Thead, Trow, Tcol } from 'frui/element/Table';
 import { H1, H2, E, S, A, P, H, C, SS } from '../../components/index.js';
 import { Nav, Note, Warn, Code, Layout } from '../../components/index.js';
 
-export const examples = [
+const examples = [
 //0-------------------------------------------------------------------//
 `import type { Method } from 'stackpress/types';
 export type APIType = 'app'|'public'|'session';

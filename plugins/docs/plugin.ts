@@ -56,9 +56,9 @@ export default function plugin(server: Server) {
       'design/theme-project',
       'design/ui-components',
       'develop/configure-project',
+      'develop/customize-bootstrap',
       'develop/develop-events',
       'develop/develop-routes',
-      'develop/query-database',
       'plugins/create-plugins',
       'plugins/toggle-plugins',
       'references/client-api/actions',
@@ -94,18 +94,17 @@ export default function plugin(server: Server) {
       'toolkit/setup-authentication',
       'toolkit/setup-email',
       'toolkit/setup-permissions',
-      'transform/customize-admin',
+      'toolkit/setup/1-project-setup',
+      'toolkit/setup/2-client-engine',
+      'toolkit/setup/3-database-engine',
+      'toolkit/setup/4-context-provider',
       'transform/form-idea',
       'transform/generate-idea',
       'tutorial/1-ecmascript',
       'tutorial/2-plugin-architecture',
       'tutorial/3-server-routes',
       'tutorial/4-server-props',
-      'tutorial/5-view-engine',
-      'toolkit/setup/1-project-setup',
-      'toolkit/setup/2-client-engine',
-      'toolkit/setup/3-database-engine',
-      'toolkit/setup/4-context-provider'
+      'tutorial/5-view-engine'
     ].map(route => {
       server.get(`/docs/${route}`, `@/plugins/docs/views/${route}`, -100);  
     });

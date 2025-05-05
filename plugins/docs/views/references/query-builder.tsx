@@ -3,11 +3,92 @@ import type {
   ServerConfigProps, 
   ServerPageProps 
 } from 'stackpress/view/client';
+import { createContext, useContext, useState } from 'react';
 import { useLanguage } from 'stackpress/view/client';
-import { Table, Thead, Trow, Tcol } from 'frui/element/Table';
 //docs
 import { H1, H2, H4,  P, C, A, SS } from '../../components/index.js';
 import { Nav, Note, Code, Layout } from '../../components/index.js';
+
+const setup = [
+//0-------------------------------------------------------------------//
+`{
+  //...
+  "dependencies": {
+    "@stackpress/inquire-pg": "^0.5.16",
+    "pg": "8.13.1",
+    //...
+  }
+  //...
+}`,
+//1-------------------------------------------------------------------//
+`{
+  //...
+  "dependencies": {
+    "@stackpress/inquire-pglite": "^0.5.16",
+    "@electric-sql/pglite": "0.2.14",
+    //...
+  }
+  //...
+}`,
+//2-------------------------------------------------------------------//
+`{
+  //...
+  "dependencies": {
+    "@stackpress/inquire-mysql": "^0.5.16",
+    "mysql2": "3.11.5",
+    //...
+  }
+  //...
+}`,
+//3-------------------------------------------------------------------//
+`{
+  //...
+  "dependencies": {
+    "@stackpress/inquire-sqlite3": "^0.5.16",
+    "better-sqlite3": "11.7.0",
+    //...
+  },
+  //...
+}`,
+//4-------------------------------------------------------------------//
+`import { Pool } from 'pg'
+import { connect } from 'stackpress/pg'
+
+const db = await connect(async () => {
+  const pool = new Pool({...})
+  return await pool.connect()
+})`,
+//5-------------------------------------------------------------------//
+`import { PGlite } from '@electric-sql/pglite'
+import { connect } from 'stackpress/pglite'
+
+const db = await connect(async () => new PGlite('/path/to/db'))`,
+//6-------------------------------------------------------------------//
+`import mysql from 'mysql2/promise'
+import { connect } from 'stackpress/mysql'
+
+const db = await connect(async () => await mysql.createConnection({...}))`,
+//7-------------------------------------------------------------------//
+`import sqlite from 'better-sqlite3'
+import { connect } from 'stackpress/sqlite'
+
+const db = await connect(async () => sqlite(':memory:'))`,
+//8-------------------------------------------------------------------//
+`import type { Server } from 'stackpress/server'
+import type { DatabasePlugin } from 'stackpress/sql'
+
+export default function plugin(server: Server) {
+  const db = server.plugin<DatabasePlugin>('database')
+}`,
+//9-------------------------------------------------------------------//
+`import type { DatabasePlugin } from 'stackpress/sql'
+import { action } from 'stackpress/server'
+
+export default action(function Action(req, res, ctx) {
+  const db = ctx.plugin<DatabasePlugin>('database')
+})`
+//10------------------------------------------------------------------//
+];
 
 const examples = [
 //0-------------------------------------------------------------------//
@@ -105,6 +186,56 @@ const { query, value } = db.dialect.update(updateBuilder)`,
 })`,
 //11------------------------------------------------------------------//
 ];
+
+export const DBContext = createContext<{ db: string, change: Function }>({
+  db: 'pgsql', 
+  change: () => {}
+});
+
+export function DBProvider({ children }: { children: React.ReactNode }) {
+  const [ db, change ] = useState('pgsql');
+  return (
+    <DBContext.Provider value={{ db, change }}>
+      {children}
+    </DBContext.Provider>
+  );
+}
+
+export function DBTabs({ mysql, pglite, pgsql, sqlite }: { 
+  mysql: React.ReactNode, 
+  pglite: React.ReactNode,
+  pgsql: React.ReactNode,
+  sqlite: React.ReactNode
+}) {
+  const { db, change } = useContext(DBContext);
+  return (
+    <div className="rounded-lg px-pb-20">
+      <div className="theme-bg-bg3 flex items-center px-w-100-0 overflow-x-auto">
+        {[ 'pgsql', 'pglite', 'mysql', 'sqlite' ].map(engine => (
+          <div 
+            key={engine}
+            className={`px-py-10 px-px-30 cursor-pointer ${db === engine ? 'theme-bg-bg1' : 'theme-bg-bg2'}`}
+            onClick={() => change(engine)}
+          >
+            {engine}
+          </div>
+        ))}
+      </div>
+      <div className={`theme-bg-bg1 ${db === 'pgsql' ? '' : 'hidden'}`}>
+        {pgsql}
+      </div>
+      <div className={`theme-bg-bg1 ${db === 'pglite' ? '' : 'hidden'}`}>
+        {pglite}
+      </div>
+      <div className={`theme-bg-bg1 ${db === 'mysql' ? '' : 'hidden'}`}>
+        {mysql}
+      </div>
+      <div className={`theme-bg-bg1 ${db === 'sqlite' ? '' : 'hidden'}`}>
+        {sqlite}
+      </div>
+    </div>
+  );
+}
 
 export function Head(props: ServerPageProps<ServerConfigProps>) {
   //props
@@ -209,69 +340,57 @@ export function Body() {
 
       <P>
         <SS>Stackpress</SS> provides a super lightweight generic typed 
-        SQL query builder, SQL dialects and sql composite engine. It is 
-        designed to work with the existing SQL packages. The following 
-        describes the way to connect to currently supported SQL databases
-        packages.
+        SQL query builder, SQL dialects and sql composite engine. In 
+        order to use the SQL query builder you need to install the
+        following packages depending on the SQL engine you are trying 
+        to use.
       </P>
 
-      <div className="px-w-100-0 overflow-x-auto">
-        <Table>
-          <Thead className="theme-bg-bg2 text-left">
-            Type
-          </Thead>
-          <Thead noWrap className="theme-bg-bg2 text-left">
-            Required Packages
-          </Thead>
-          <Thead className="theme-bg-bg2 text-left">
-            Snippet
-          </Thead>
-          <Trow>
-            <Tcol noWrap className="text-left">MySQL</Tcol>
-            <Tcol noWrap className="text-left">
-              <C>{'mysql2@^3'}</C>
-              <br /><br />
-              <C>{'@stackpress/inquire-mysql2'}</C>
-            </Tcol>
-            <Tcol className="text-left">
-              <Code>{examples[0]}</Code>
-            </Tcol>
-          </Trow>
-          <Trow>
-            <Tcol noWrap className="text-left">PostGreSQL</Tcol>
-            <Tcol noWrap className="text-left">
-              <C>{'pg@^8'}</C>
-              <br /><br />
-              <C>{'@stackpress/inquire-pg'}</C>
-            </Tcol>
-            <Tcol className="text-left">
-              <Code>{examples[1]}</Code>
-            </Tcol>
-          </Trow>
-          <Trow>
-            <Tcol noWrap className="text-left">PostGreSQL</Tcol>
-            <Tcol noWrap className="text-left">
-              <C>{'pglite@^0.2'}</C>
-              <br /><br />
-              <C>{'@stackpress/inquire-pglite'}</C>
-            </Tcol>
-            <Tcol className="text-left">
-              <Code>{examples[2]}</Code>
-            </Tcol>
-          </Trow>
-          <Trow>
-            <Tcol noWrap className="text-left">SQLite</Tcol>
-            <Tcol noWrap className="text-left">
-              <C>{'better-sqlite3@^11'}</C>
-              <br /><br />
-              <C>{'@stackpress/inquire-sqlite3'}</C>
-            </Tcol>
-            <Tcol className="text-left">
-              <Code>{examples[3]}</Code>
-            </Tcol>
-          </Trow>
-        </Table>
-      </div>
+      <section>
+        <DBTabs
+          pgsql={(<Code>{setup[0]}</Code>)}
+          pglite={(<Code>{setup[1]}</Code>)}
+          mysql={(<Code>{setup[2]}</Code>)}
+          sqlite={(<Code>{setup[3]}</Code>)}
+        />
+
+        <P>
+          Once you have installed the required packages, the following
+          examples show how to setup the database connection would look 
+          like depending on the SQL engine you are trying to use.
+        </P>
+
+        <DBTabs
+          pgsql={(<Code>{setup[4]}</Code>)}
+          pglite={(<Code>{setup[5]}</Code>)}
+          mysql={(<Code>{setup[6]}</Code>)}
+          sqlite={(<Code>{setup[7]}</Code>)}
+        />
+
+        <Note>
+          It's recommended to setup the database as described in 
+          the <A href="/docs/toolkit/setup/3-database-engine">
+            Toolkit Setup
+          </A> tutorial.
+        </Note>
+
+        <P>
+          In a plugin you can access the database connection using 
+          the <C>server.plugin()</C> method like the following.
+        </P>
+
+        <Code>{setup[8]}</Code>
+
+        <P>
+          In a route or event you can access the database connection 
+          using the <C>ctx.plugin()</C> method like the 
+          following.
+        </P>
+
+        <Code>{setup[9]}</Code>
+      </section>
+
+
 
       {/*------------------------------------------------------------*/}
 
@@ -601,7 +720,9 @@ export default function Page(props: ServerPageProps<ServerConfigProps>) {
       response={response}
       right={<Right />}
     >
-      <Body />
+      <DBProvider>
+        <Body />
+      </DBProvider>
     </Layout>
   );
 }

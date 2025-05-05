@@ -9,7 +9,7 @@ import { Table, Thead, Trow, Tcol } from 'frui/element/Table';
 import { H1, P, C } from '../../components/index.js';
 import { Nav, Code, Note, Warn, Layout } from '../../components/index.js';
 
-export const examples = [
+const examples = [
 //0-------------------------------------------------------------------//
 `export const config: Config = {
   //...

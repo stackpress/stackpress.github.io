@@ -12,19 +12,19 @@
     "build": "yarn build:client && yarn build:docs",
     "build:client": "tsx build.ts",
     "build:docs": "tsx scripts/build.ts",
-    "dev": "stackpress config/develop serve -v",
-    "emit": "stackpress config/develop emit -v",
-    "preview": "stackpress config/preview serve -v"
+    "dev": "stackpress serve -b config/develop -v",
+    "emit": "stackpress emit -b config/develop -v",
+    "preview": "stackpress serve -b config/preview -v"
   },
   "dependencies": {
     "frui": "0.1.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-syntax-highlighter": "15.6.1",
-    "stackpress": "0.2.10"
+    "stackpress": "0.2.12"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.15",
+    "@stackpress/idea-transformer": "0.5.16",
     "@types/chai": "5.2.1",
     "@types/mocha": "10.0.10",
     "@types/node": "22.14.1",
