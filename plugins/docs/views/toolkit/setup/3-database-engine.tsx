@@ -277,10 +277,9 @@ export default action(async function Populate(_req, _res, ctx) {
     "frui": "0.1.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.10"
+    "stackpress": "0.2.19"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",

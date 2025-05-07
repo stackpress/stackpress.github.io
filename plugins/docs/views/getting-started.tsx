@@ -135,10 +135,10 @@ export function Body() {
           </div>
         </div>
         <Code copy language="bash" className={`theme-bg-bg1 ${install === 'npm' ? '' : 'hidden'}`}>{
-          'npm -i -D @types/node @types/react @types/react-dom typescript tsx @stackpress/idea-transformer fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
+          'npm -i -D @types/node @types/react @types/react-dom typescript tsx fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
         }</Code>
         <Code copy language="bash" className={`theme-bg-bg1 ${install === 'yarn' ? '' : 'hidden'}`}>{
-          'yarn add --dev @types/node @types/react @types/react-dom typescript tsx @stackpress/idea-transformer fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
+          'yarn add --dev @types/node @types/react @types/react-dom typescript tsx fast-glob prettier ts-morph @vitejs/plugin-react unocss vite'
         }</Code>
       </div>
 
@@ -153,10 +153,9 @@ export function Body() {
             "frui": "0.1.6",
             "react": "19.1.0",
             "react-dom": "19.1.0",
-            "stackpress": "0.2.14"
+            "stackpress": "0.2.19"
           },
           "devDependencies": {
-            "@stackpress/idea-transformer": "0.5.17",
             "@types/node": "22.14.1",
             "@types/react": "19.1.2",
             "@types/react-dom": "19.1.2",
