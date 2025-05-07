@@ -77,10 +77,12 @@ https://github.com/highlightjs/highlight.js/issues/2277`),Oa=X,ft=le);const it={
     "stackpress": "0.2.14"
   },
   "devDependencies": {
+    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "@vitejs/plugin-react": "4.4.1",
+    "fast-glob": "3.3.3",
     "tsx": "4.19.3",
     "typescript": "5.8.3",
     "vite": "6.3.2"
