@@ -142,10 +142,9 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.14"
+    "stackpress": "0.2.19"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
@@ -327,10 +326,9 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.14"
+    "stackpress": "0.2.19"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",

@@ -9,7 +9,9 @@
     "stackpress"
   ],
   "scripts": {
-    "build": "tsx build.ts",
+    "build": "yarn build:purge && yarn build:tsx",
+    "build:purge": "rm -rf docs",
+    "build:tsx": "npx tsx build.ts",
     "dev": "stackpress serve -b config/develop -v",
     "emit": "stackpress emit -b config/develop -v",
     "preview": "stackpress serve -b config/preview -v"

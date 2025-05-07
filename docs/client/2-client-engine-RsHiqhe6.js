@@ -162,10 +162,9 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.14"
+    "stackpress": "0.2.19"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
@@ -216,8 +215,6 @@ export default defineConfig({
     //...
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.17",
-    "fast-glob": "3.3.3",
     "prettier": "3.5.3",
     "ts-morph": "25.0.1",
     //...
@@ -355,10 +352,9 @@ export default function plugin(server: Server) {
     "frui": "0.1.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.10"
+    "stackpress": "0.2.19"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.17",
     "@types/node": "22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
