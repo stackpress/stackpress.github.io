@@ -171,7 +171,7 @@ export default function plugin(server: Server) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress serve -b config/develop -v"
+    "dev": "stackpress serve --b config/develop -v"
   },
   "dependencies": {
     "frui": "0.1.6",
@@ -457,7 +457,7 @@ export default action(async function Populate(_req, _res, ctx) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress serve -b config/develop -v"
+    "dev": "stackpress serve --b config/develop -v"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.2.17",

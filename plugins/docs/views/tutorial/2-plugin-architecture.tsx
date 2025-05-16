@@ -129,7 +129,7 @@ export default function plugin(server: Server) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress serve -b config/develop -v"
+    "dev": "stackpress serve --b config/develop -v"
   },
   "dependencies": {
     "react": "19.1.0",
@@ -458,7 +458,7 @@ export function Body() {
               "stackpress"
             ],
             "scripts": {
-              "dev": "stackpress serve -b config/develop -v"
+              "dev": "stackpress serve --b config/develop -v"
             },
           }, null, 2)
         }</Code>

@@ -195,7 +195,7 @@ export function Body() {
         command in the terminal.
       </P>
 
-      <Code lang="bash">{'npx stackpress serve -b config/develop'}</Code>
+      <Code lang="bash">{'npx stackpress serve --b config/develop'}</Code>
 
       <a id="manual-loading"></a>
       <H2>Manual Loading</H2>

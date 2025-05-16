@@ -604,7 +604,7 @@ export function Body() {
         command in the terminal.
       </P>
 
-      <Code lang="bash">{'npx stackpress serve -b config/develop'}</Code>
+      <Code lang="bash">{'npx stackpress serve --b config/develop'}</Code>
 
 
       {/*------------------------------------------------------------*/}
@@ -628,7 +628,7 @@ export function Body() {
         command in the terminal.
       </P>
 
-      <Code lang="bash">{'npx stackpress serve -b config/build'}</Code>
+      <Code lang="bash">{'npx stackpress serve --b config/build'}</Code>
 
       {/*------------------------------------------------------------*/}
 
@@ -651,7 +651,7 @@ export function Body() {
         command in the terminal.
       </P>
 
-      <Code lang="bash">{'npx stackpress serve -b config/preview'}</Code>
+      <Code lang="bash">{'npx stackpress serve --b config/preview'}</Code>
 
       <Nav
         next={{ 

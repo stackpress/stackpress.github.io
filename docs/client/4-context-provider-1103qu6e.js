@@ -223,7 +223,7 @@ export default action(async function Populate(_req, _res, ctx) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress serve -b config/develop -v"
+    "dev": "stackpress serve --b config/develop -v"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.2.17",
@@ -510,7 +510,7 @@ export default action(async function Populate(_req, _res, ctx) {
     "stackpress"
   ],
   "scripts": {
-    "dev": "stackpress serve -b config/develop -v"
+    "dev": "stackpress serve --b config/develop -v"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.2.17",

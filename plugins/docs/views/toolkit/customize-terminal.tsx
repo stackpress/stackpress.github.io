@@ -85,7 +85,7 @@ export function Body() {
 
       <P>
         In Terminal, 
-        run <B>npx stackpress hello-age -b config/develop --name John</B> to 
+        run <B>npx stackpress hello-age --b config/develop --name John</B> to 
         see your command execute.
       </P>
       
