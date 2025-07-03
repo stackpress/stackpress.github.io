@@ -162,7 +162,7 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.19"
+    "stackpress": "0.2.27"
   },
   "devDependencies": {
     "@types/node": "22.14.1",
@@ -211,7 +211,7 @@ export default defineConfig({
 {
   //...
   "dependencies": {
-    "frui": "0.1.6",
+    "frui": "0.1.8",
     //...
   },
   "devDependencies": {
@@ -349,10 +349,10 @@ export default function plugin(server: Server) {
     "dev": "stackpress serve --b config/develop -v"
   },
   "dependencies": {
-    "frui": "0.1.6",
+    "frui": "0.1.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.19"
+    "stackpress": "0.2.27"
   },
   "devDependencies": {
     "@types/node": "22.14.1",

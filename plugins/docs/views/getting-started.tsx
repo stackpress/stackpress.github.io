@@ -150,10 +150,10 @@ export function Body() {
       <Code copy language="javascript" className="bg-black text-white px-mx-10 px-mb-20">{
         JSON.stringify({
           "dependencies": {
-            "frui": "0.1.6",
+            "frui": "0.1.8",
             "react": "19.1.0",
             "react-dom": "19.1.0",
-            "stackpress": "0.2.19"
+            "stackpress": "0.2.27"
           },
           "devDependencies": {
             "@types/node": "22.14.1",
