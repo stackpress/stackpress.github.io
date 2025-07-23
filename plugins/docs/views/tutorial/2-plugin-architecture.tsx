@@ -16,7 +16,8 @@ const examples = [
 import type { Config } from 'stackpress/types';
 //development configuration
 const config: Config = {
-  server: { mode: 'development' }
+  server: { mode: 'development' },
+  view: {}
 };
 //export configuration
 export default config;`,
@@ -70,7 +71,8 @@ const content = {
 import type { Config } from 'stackpress/types';
 //development configuration
 const config: Config = {
-  server: { mode: 'development' }
+  server: { mode: 'development' },
+  view: {}
 };
 //export configuration
 export default config;
@@ -134,7 +136,7 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.27"
+    "stackpress": "0.2.30"
   },
   "devDependencies": {
     "@types/node": "22.14.1",
@@ -364,8 +366,9 @@ export function Body() {
         <P>
           This file will host all the configuration for the development 
           piece of your application. In this case we just need to 
-          set <C>{`{ server: { mode: 'development' } }`}</C> because by 
-          default it's <C>'production'</C>. This tells future plugins 
+          set <C>view</C> to <C>{`{}`}</C> to enable ReactJS views 
+          and <C>server</C> to <C>{`{ mode: 'development' }`}</C> because 
+          by default it's <C>'production'</C>. This tells future plugins 
           what environment the project is currently in. Later sections 
           will explain a <SS>build</SS> and <SS>preview</SS> configuration 
           as well.

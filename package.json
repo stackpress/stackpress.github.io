@@ -17,14 +17,14 @@
     "preview": "stackpress serve -v --b config/preview"
   },
   "dependencies": {
-    "frui": "0.1.6",
+    "frui": "0.1.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-syntax-highlighter": "15.6.1",
-    "stackpress": "0.2.14"
+    "stackpress": "0.2.30"
   },
   "devDependencies": {
-    "@stackpress/idea-transformer": "0.5.17",
+    "@stackpress/idea-transformer": "0.5.30",
     "@types/chai": "5.2.1",
     "@types/mocha": "10.0.10",
     "@types/node": "22.14.1",

@@ -422,23 +422,24 @@ export default function Layout(props: LayoutProviderProps & PanelAppProps) {
     right,
     children 
   } = props;
-  const [ request, setRequest ] = useState<Record<string, any>>(
-    props.request || {}
-  );
+  const [ request, setRequest ] = useState<Record<string, any>>({
+    ...(props.request || {}),
+    session: {
+      ...(props.request?.session || {}),
+      theme: props.request?.session?.theme || 'dark'
+    }
+  });
   //unload flash message
   useEffect(() => {
-    const dark = document.cookie.includes('theme=dark');
+    const light = document.cookie.includes('theme=light');
     if (!request.session?.theme) {
       setRequest({
         ...request,
-        session: { theme: dark ? 'dark': 'light' }
+        session: { theme: light ? 'light' : 'dark' }
       });
     }
     unload();
   }, []);
-  if (!request?.session?.theme) {
-    return null;
-  }
   return (
     <LayoutProvider 
       data={data}

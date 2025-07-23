@@ -94,7 +94,8 @@ const content = {
 import type { Config } from 'stackpress/types';
 //development configuration
 const config: Config = {
-  server: { mode: 'development' }
+  server: { mode: 'development' },
+  view: {}
 };
 //export configuration
 export default config;
@@ -173,7 +174,7 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.27"
+    "stackpress": "0.2.30"
   },
   "devDependencies": {
     "@types/node": "22.14.1",

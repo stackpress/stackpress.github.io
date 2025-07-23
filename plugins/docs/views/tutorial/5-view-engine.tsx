@@ -46,7 +46,8 @@ import unocss from 'unocss/vite';
 //development configuration
 const config: Config = {
   server: { 
-    mode: 'development' 
+    mode: 'development',
+    view: {}
   },
   view: {
     engine: {
@@ -188,7 +189,7 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.27"
+    "stackpress": "0.2.30"
   },
   "devDependencies": {
     "@types/node": "22.14.1",
