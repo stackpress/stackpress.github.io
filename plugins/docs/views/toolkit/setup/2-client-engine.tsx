@@ -175,7 +175,7 @@ export default function plugin(server: Server) {
     "frui": "0.1.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.30"
+    "stackpress": "0.6.1"
   },
   "devDependencies": {
     "@types/node": "22.14.1",

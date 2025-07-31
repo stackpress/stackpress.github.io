@@ -264,11 +264,11 @@ export default action(async function Populate(_req, _res, ctx) {
   },
   "dependencies": {
     "@electric-sql/pglite": "0.2.17",
-    "@stackpress/inquire-pglite": "0.5.27",
+    "@stackpress/inquire-pglite": "0.6.1",
     "frui": "0.1.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.30"
+    "stackpress": "0.6.1"
   },
   "devDependencies": {
     "@types/node": "22.14.1",

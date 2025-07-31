@@ -74,7 +74,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`),Ca=X,ft=le);const it={
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.30"
+    "stackpress": "0.6.1"
   },
   "devDependencies": {
     "@types/node": "22.14.1",
@@ -210,7 +210,7 @@ export default function plugin(server: Server) {
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stackpress": "0.2.30"
+    "stackpress": "0.6.1"
   },
   "devDependencies": {
     "@types/node": "22.14.1",
