@@ -30,6 +30,9 @@ const examples = [
 import type { Config } from 'stackpress/types';
 import unocss from 'unocss/vite';
 
+const cwd = process.cwd();
+const build = path.join(cwd, '.build');
+
 export const config: Config = {
   //...
   database: {
@@ -38,13 +41,20 @@ export const config: Config = {
     //where to store create and alter table migration files
     // - This is used in conjunction with \`revisions\`
     // - This doesn't update the database, it simply logs the changes
-    migrations: path.join(build, 'migrations'),
-    //cascading rules used when generating the database schema
-    //options: 'CASCADE', 'SET NULL', 'RESTRICT'
-    schema: {
-      onDelete: 'CASCADE' as Cascade,
-      onUpdate: 'RESTRICT' as Cascade
-    }
+    migrations: path.join(build, 'migrations')
+  },
+  client: {
+    //used by stackpress/client to import()
+    //the generated client code to memory
+    module: 'stackpress-client',
+    //name of the client package used in package.json
+    package: 'stackpress-client',
+    //where to store serialized idea json files for historical 
+    //purposes. Revisions are used in conjuction with push and 
+    //migrate to determine the changes between each idea change.
+    revisions: path.join(build, 'revisions'),
+    //what tsconfig file to base the typescript compiler on
+    tsconfig: path.join(cwd, 'tsconfig.json')
   }
 };`,
 //1-------------------------------------------------------------------//
@@ -60,6 +70,10 @@ const content = {
 'config/develop.ts': `
 import type { Config } from 'stackpress/types';
 import unocss from 'unocss/vite';
+
+const cwd = process.cwd();
+const build = path.join(cwd, '.build');
+
 //development configuration
 const config: Config = {
   server: { 
@@ -86,13 +100,20 @@ const config: Config = {
     //where to store create and alter table migration files
     // - This is used in conjunction with \`revisions\`
     // - This doesn't update the database, it simply logs the changes
-    migrations: path.join(build, 'migrations'),
-    //cascading rules used when generating the database schema
-    //options: 'CASCADE', 'SET NULL', 'RESTRICT'
-    schema: {
-      onDelete: 'CASCADE' as Cascade,
-      onUpdate: 'RESTRICT' as Cascade
-    }
+    migrations: path.join(build, 'migrations')
+  },
+  client: {
+    //used by stackpress/client to import()
+    //the generated client code to memory
+    module: 'stackpress-client',
+    //name of the client package used in package.json
+    package: 'stackpress-client',
+    //where to store serialized idea json files for historical 
+    //purposes. Revisions are used in conjuction with push and 
+    //migrate to determine the changes between each idea change.
+    revisions: path.join(build, 'revisions'),
+    //what tsconfig file to base the typescript compiler on
+    tsconfig: path.join(cwd, 'tsconfig.json')
   }
 };
 //export configuration
@@ -527,12 +548,12 @@ export function Body() {
       {/*------------------------------------------------------------*/}
 
       <a id="configure-database"></a>
-      <H2>2.1. Configure Database</H2>
+      <H2>2.2. Configure Database</H2>
 
       <section>
         <P>
           Update the <H>config/develop.ts</H> file to include the 
-          following <C>database</C> configuration.
+          following <C>database</C> and <C>client</C> configuration.
         </P>
 
         <Code>{examples[1]}</Code>
@@ -569,6 +590,55 @@ export function Body() {
             </Tcol>
             <Tcol className="text-left">
               Cascading rules used when generating the database schema
+            </Tcol>
+          </Trow>
+        </Table>
+      </div>
+
+      <section>
+        <P>
+          The following explains the <C>client</C> configuration 
+          options.
+        </P>
+      </section>
+
+      <div className="px-w-100-0 overflow-x-auto">
+        <Table>
+          <Thead className="theme-bg-bg2 text-left">Options</Thead>
+          <Thead wrap3 className="theme-bg-bg2 text-left">Notes</Thead>
+          <Trow>
+            <Tcol noWrap className="text-left">
+              <C>{'module'}</C>
+            </Tcol>
+            <Tcol className="text-left">
+              The name of the module that Stackpress will use to import the client
+            </Tcol>
+          </Trow>
+          <Trow>
+            <Tcol noWrap className="theme-bg-bg1 text-left">
+              <C>{'package'}</C>
+            </Tcol>
+            <Tcol className="theme-bg-bg1 text-left">
+              The name of the client package that will be used when 
+              generating a <C>package.json</C> during build
+            </Tcol>
+          </Trow>
+          <Trow>
+            <Tcol noWrap className="text-left">
+              <C>{'revisions'}</C>
+            </Tcol>
+            <Tcol className="text-left">
+              Where to store serialized idea json files for historical 
+              purposes. Revisions are used in conjuction with push and 
+              migrate to determine the changes between each idea change.
+            </Tcol>
+          </Trow>
+          <Trow>
+            <Tcol noWrap className="text-left">
+              <C>{'tsconfig'}</C>
+            </Tcol>
+            <Tcol className="text-left">
+              What tsconfig file to base the typescript compiler on
             </Tcol>
           </Trow>
         </Table>
@@ -613,7 +683,7 @@ export function Body() {
       <H2>2.4. Generate Idea</H2>
 
       <section>
-        <P>In Terminal, run <C>npx stackpress config/develop generate</C>.</P>
+        <P>In Terminal, run <C>npx stackpress generate --b config/develop</C>.</P>
 
         <P>
           If you open the <H>node_modules</H> folder in the project root,

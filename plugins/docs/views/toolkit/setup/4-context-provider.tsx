@@ -68,6 +68,10 @@ const content = {
 'config/develop.ts': `
 import type { Config } from 'stackpress/types';
 import unocss from 'unocss/vite';
+
+const cwd = process.cwd();
+const build = path.join(cwd, '.build');
+
 //development configuration
 const config: Config = {
   server: { 
@@ -94,13 +98,20 @@ const config: Config = {
     //where to store create and alter table migration files
     // - This is used in conjunction with \`revisions\`
     // - This doesn't update the database, it simply logs the changes
-    migrations: path.join(build, 'migrations'),
-    //cascading rules used when generating the database schema
-    //options: 'CASCADE', 'SET NULL', 'RESTRICT'
-    schema: {
-      onDelete: 'CASCADE' as Cascade,
-      onUpdate: 'RESTRICT' as Cascade
-    }
+    migrations: path.join(build, 'migrations')
+  },
+  client: {
+    //used by stackpress/client to import()
+    //the generated client code to memory
+    module: 'stackpress-client',
+    //name of the client package used in package.json
+    package: 'stackpress-client',
+    //where to store serialized idea json files for historical 
+    //purposes. Revisions are used in conjuction with push and 
+    //migrate to determine the changes between each idea change.
+    revisions: path.join(build, 'revisions'),
+    //what tsconfig file to base the typescript compiler on
+    tsconfig: path.join(cwd, 'tsconfig.json')
   }
 };
 //export configuration
@@ -230,20 +241,23 @@ export default function plugin(server: Server) {
 `.trim(),
 //3-------------------------------------------------------------------//
 'plugins/store/populate.ts': `
-import type { ProfileAuth } from 'stackpress';
+import type { Profile } from 'stackpress';
 import { action } from 'stackpress/server';
 
 export default action(async function Populate(_req, _res, ctx) {
-  const admin = await ctx.resolve<ProfileAuth>('auth-signup', {
+  const profile = await ctx.resolve<Profile>('profile-create', {
     type: 'person',
     name: 'Admin',
-    username: 'admin',
-    email: 'admin@project.com',
-    secret: 'admin',
     roles: [ 'ADMIN' ]
   });
+  await ctx.resolve('auth-create', {
+    profileId: profile.results?.id,
+    type: 'username',
+    token: 'admin',
+    secret: 'admin'
+  });
   await ctx.resolve('application-create', {
-    profileId: admin.results?.id,
+    profileId: profile.results?.id,
     name: 'Example App',
     scopes: [ 'profile-write', 'auth-read' ],
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365)
