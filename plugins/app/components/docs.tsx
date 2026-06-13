@@ -520,7 +520,7 @@ export function HomeBody() {
             <h1>{result.title}</h1>
             <p className="docs-lead">{result.description}</p>
             <div className="docs-actions">
-              <a className="docs-button primary" href="/guides/100-develop">
+              <a className="docs-button primary" href="/guides/002-getting-started">
                 Get Started
               </a>
               <a className="docs-button" href="/api">
