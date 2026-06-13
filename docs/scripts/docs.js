@@ -226,11 +226,11 @@
   function setTheme(theme, options) {
     const root = getRoot();
     const readerLevel = Number(root.dataset.readerLevel || 1);
-    const next = readerLevel < 4 ? 'light' : theme;
+    const next = readerLevel < 4 ? 'light' : readerLevel === 8 ? 'dark' : theme;
     root.dataset.theme = next;
     root.classList.remove('docs-theme-light', 'docs-theme-dark');
     root.classList.add('docs-theme-' + next);
-    if ((!options || options.persist !== false) && readerLevel >= 4) {
+    if ((!options || options.persist !== false) && readerLevel >= 4 && readerLevel < 8) {
       writeStorage(themeKey, next);
     }
     updateThemeButtons();
@@ -247,6 +247,8 @@
 
     if (readerLevel < 4) {
       setTheme('light', { persist: false });
+    } else if (readerLevel === 8) {
+      setTheme('dark', { persist: false });
     } else {
       const saved = getSavedTheme();
       setTheme(saved === 'dark' || saved === 'light' ? saved : 'light', {
@@ -262,8 +264,9 @@
     renderBadge(readerLevel);
 
     document.querySelectorAll('.docs-theme-switch').forEach(button => {
-      button.hidden = readerLevel < 4;
-      button.disabled = readerLevel < 4;
+      const unavailable = readerLevel < 4 || readerLevel === 8;
+      button.hidden = unavailable;
+      button.disabled = unavailable;
     });
   }
 

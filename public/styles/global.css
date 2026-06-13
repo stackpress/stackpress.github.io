@@ -532,7 +532,15 @@ body,
   background: rgba(7, 17, 29, 0.94);
 }
 
+.docs-site.docs-level-8 .docs-topbar {
+  background: rgba(7, 17, 29, 0.94);
+}
+
 .docs-site.docs-theme-dark .docs-brand img {
+  filter: brightness(0) invert(1);
+}
+
+.docs-site.docs-level-8 .docs-brand img {
   filter: brightness(0) invert(1);
 }
 
@@ -1285,6 +1293,41 @@ body,
   --docs-code: #05080d;
   --docs-shadow: 0 20px 70px rgba(0, 0, 0, 0.38);
   --docs-radius: 4px;
+}
+
+.docs-site.docs-level-8 .docs-article p,
+.docs-site.docs-level-8 .docs-article li,
+.docs-site.docs-level-8 .docs-article td,
+.docs-site.docs-level-8 .docs-foundry-card p {
+  color: #d6e2ee;
+}
+
+.docs-site.docs-level-8 .docs-sidebar a,
+.docs-site.docs-level-8 .docs-toc a,
+.docs-site.docs-level-8 .docs-card-grid span,
+.docs-site.docs-level-8 .docs-paths span,
+.docs-site.docs-level-8 .docs-pager span,
+.docs-site.docs-level-8 .docs-footer {
+  color: var(--docs-muted);
+}
+
+.docs-site.docs-level-8 .docs-article th,
+.docs-site.docs-level-8 .docs-card-grid strong,
+.docs-site.docs-level-8 .docs-pager strong,
+.docs-site.docs-level-8 .docs-footer a {
+  color: var(--docs-blue-dark);
+}
+
+.docs-site.docs-level-8 .docs-sidebar a.is-current {
+  color: var(--docs-blue-dark);
+}
+
+.docs-site.docs-level-8 .docs-article p code,
+.docs-site.docs-level-8 .docs-article li code,
+.docs-site.docs-level-8 .docs-article td code {
+  background: #0c1724;
+  border-color: var(--docs-line);
+  color: var(--docs-blue-dark);
 }
 
 .docs-site.docs-level-1 {
