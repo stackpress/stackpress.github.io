@@ -2,6 +2,7 @@
 import unocss from 'unocss/vite';
 //stackpress
 import { server as http } from 'stackpress/http';
+import { CLIENT_TEMPLATE, DOCUMENT_TEMPLATE } from 'stackpress/view';
 //config
 import type { Config } from './common.js';
 import * as common from './common.js';
@@ -9,7 +10,9 @@ import * as common from './common.js';
 export const config: Config = {
   server: {
     ...common.server,
-    mode: 'development'
+    mode: 'development',
+    //where to store the build files
+    build: common.build
   },
   view: {
     ...common.view,
@@ -22,21 +25,30 @@ export const config: Config = {
       //<script type="module" src="/client/[id][extname]"></script>
       //<script type="module" src="/client/abc123.tsx"></script>
       clientRoute: '/client',
+      //template wrapper for the client script (tsx)
+      clientTemplate: CLIENT_TEMPLATE,
       //filepath to a global css file
       cssFiles: [ 
         'frui/frui.css', 
         'stackpress/stackpress.css', 
         'virtual:uno.css' 
       ],
+      optimizeDeps: { 
+        include: [ 'react-dom/client' ] 
+      },
+      //template wrapper for the document markup (html)
+      documentTemplate: DOCUMENT_TEMPLATE,
       //vite plugins
-      plugins: [ unocss() ]
+      plugins: [ unocss() ],
+      //original vite options (overrides other settings related to vite)
+      vite: undefined,
+      //ignore files in watch mode
+      watchIgnore: []
     }
   },
   brand: common.brand,
-  cli: common.cli,
-  cookie: common.cookie,
   language: common.language,
-  session: common.session
+  terminal: common.terminal
 };
 
 export default async function bootstrap() {
